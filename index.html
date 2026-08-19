@@ -232,7 +232,7 @@
 		<div class="container nav-inner">
 			<a href="#story-hero" class="nav-brand" aria-label="Sweta Kadam Home" title="Sweta Kadam Portfolio">
 				<!-- Seamless 3D Origami Ribbon SK Monogram Logo -->
-				<svg class="nav-sk-logo" viewBox="0 0 660 450" width="54" height="36" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SK Monogram Logo">
+				<svg class="nav-sk-logo" viewBox="0 0 680 450" width="56" height="38" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SK Monogram Logo">
 					<defs>
 						<linearGradient id="sk-grad-shadow" x1="72.27%" y1="39.15%" x2="-4.6%" y2="39.15%">
 							<stop stop-color="#1E3A8A" offset="0%"/>
@@ -242,22 +242,22 @@
 							<stop stop-color="#00F2FE" offset="0%"/>
 							<stop stop-color="#4FACFE" offset="100%"/>
 						</linearGradient>
-						<linearGradient id="sk-grad-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+						<linearGradient id="sk-grad-blue-main" x1="0%" y1="0%" x2="100%" y2="100%">
 							<stop stop-color="#2563EB" offset="0%"/>
 							<stop stop-color="#1D4ED8" offset="100%"/>
 						</linearGradient>
-						<linearGradient id="sk-grad-stem" x1="0%" y1="0%" x2="0%" y2="100%">
-							<stop stop-color="#3B82F6" offset="0%"/>
-							<stop stop-color="#1D4ED8" offset="100%"/>
+						<linearGradient id="sk-grad-blue-dark" x1="0%" y1="0%" x2="100%" y2="100%">
+							<stop stop-color="#1D4ED8" offset="0%"/>
+							<stop stop-color="#1E3A8A" offset="100%"/>
 						</linearGradient>
 					</defs>
 					
 					<!-- Letter S: 3D Folded Origami Ribbon -->
 					<g id="letter-S">
 						<!-- Top Chevron -->
-						<path d="M0,90 L150,0 L300,90 L300,170 L150,80 L0,170 Z" fill="url(#sk-grad-blue)"/>
+						<path d="M0,90 L150,0 L300,90 L300,170 L150,80 L0,170 Z" fill="url(#sk-grad-blue-main)"/>
 						<!-- Bottom Inverted Chevron -->
-						<path d="M0,352 L150,442 L300,352 L300,272 L150,362 L0,272 Z" fill="url(#sk-grad-blue)"/>
+						<path d="M0,352 L150,442 L300,352 L300,272 L150,362 L0,272 Z" fill="url(#sk-grad-blue-main)"/>
 						<!-- Top Fold Shadow -->
 						<path d="M0,90 L100,110 L0,170 Z" fill="url(#sk-grad-shadow)" opacity="0.75"/>
 						<!-- Bottom Fold Shadow -->
@@ -266,20 +266,22 @@
 						<path d="M0,91 L150,181 L300,271 L300,351 L150,261 L0,171 Z" fill="url(#sk-grad-cyan)"/>
 					</g>
 
-					<!-- Letter K: Matching 3D Folded Origami Ribbon -->
-					<g id="letter-K" transform="translate(340, 0)">
-						<!-- Vertical Pillar Stem -->
-						<path d="M0,60 L90,6 L90,388 L0,442 Z" fill="url(#sk-grad-stem)"/>
-						<!-- Bevel Top Highlight Facet -->
-						<path d="M0,60 L90,6 L90,26 L0,80 Z" fill="#93C5FD" opacity="0.95"/>
-						<!-- Bottom Arm (Behind) -->
-						<path d="M90,240 L300,364 L300,442 L90,318 Z" fill="url(#sk-grad-blue)"/>
-						<!-- Bottom Arm Under-Shadow -->
-						<path d="M90,240 L160,265 L90,318 Z" fill="url(#sk-grad-shadow)" opacity="0.75"/>
-						<!-- Top Arm (In Front - Electric Cyan Ribbon) -->
-						<path d="M90,128 L300,6 L300,84 L90,206 Z" fill="url(#sk-grad-cyan)"/>
-						<!-- Top Arm Junction Shadow -->
-						<path d="M90,128 L140,145 L90,206 Z" fill="url(#sk-grad-shadow)" opacity="0.45"/>
+					<!-- Letter K: 3D Faceted Column Stem + Symmetric Origami Ribbon Arms -->
+					<g id="letter-K" transform="translate(345, 0)">
+						<!-- 3D Pillar Left Shadow Facet -->
+						<path d="M0,64 L60,32 L60,410 L0,442 Z" fill="url(#sk-grad-blue-dark)"/>
+						<!-- 3D Pillar Right Light Facet -->
+						<path d="M60,32 L120,0 L120,378 L60,410 Z" fill="url(#sk-grad-blue-main)"/>
+						<!-- 3D Pillar Top Bevel Diamond Highlight -->
+						<path d="M0,64 L60,32 L120,0 L60,16 Z" fill="#93C5FD" opacity="0.95"/>
+						<!-- Bottom Arm (Deep Blue Ribbon) -->
+						<path d="M120,221 L320,337 L320,417 L120,301 Z" fill="url(#sk-grad-blue-main)"/>
+						<!-- Bottom Arm Depth Shadow Under Top Arm Fold -->
+						<path d="M120,221 L190,245 L120,301 Z" fill="url(#sk-grad-shadow)" opacity="0.8"/>
+						<!-- Top Arm (Electric Cyan Ribbon - Forward Fold) -->
+						<path d="M120,141 L320,25 L320,105 L120,221 Z" fill="url(#sk-grad-cyan)"/>
+						<!-- Top Arm Junction Shadow into Pillar -->
+						<path d="M120,141 L170,160 L120,221 Z" fill="url(#sk-grad-shadow)" opacity="0.45"/>
 					</g>
 				</svg>
 			</a>
