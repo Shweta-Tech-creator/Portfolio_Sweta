@@ -2112,17 +2112,20 @@
 	<!-- =======================================================================
 	     PROFESSIONAL EXECUTIVE FOOTER
 	     ======================================================================= -->
+	<!-- =======================================================================
+	     PROFESSIONAL EXECUTIVE FOOTER
+	     ======================================================================= -->
 	<footer class="footer">
 		<div class="container">
 			
-			<!-- Main Top Footer Card -->
-			<div class="footer-pro-main">
+			<!-- Modern 3-Column Container-Free Footer Grid -->
+			<div class="footer-grid">
 				
-				<!-- Brand Info & Location -->
-				<div class="footer-pro-brand">
-					<a href="#story-hero" class="footer-logo" aria-label="Sweta Kadam Home">
-						<!-- Exact SK Monogram Vector Logo -->
-						<svg class="footer-sk-logo" viewBox="0 0 350 230" width="56" height="37" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SK Logo">
+				<!-- Column 1: Brand & Status -->
+				<div class="footer-col-brand">
+					<a href="#story-hero" class="footer-brand-link" aria-label="Sweta Kadam Home" title="Sweta Kadam Portfolio">
+						<!-- Standalone Exact SK Monogram Vector Logo -->
+						<svg class="footer-sk-logo" viewBox="0 0 350 230" width="62" height="40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SK Monogram Logo">
 							<!-- 1. Tech Blue Letter K -->
 							<g fill="#0072CE">
 								<!-- K Upper Stem -->
@@ -2142,58 +2145,82 @@
 							<!-- 4. Charcoal Gray Letter S (Upper Loop, Middle Spine & Right Vertical Foot) -->
 							<path d="M 160,24 L 160,56 C 134,56 108,66 108,88 C 108,106 128,116 156,126 C 190,136 208,154 208,180 L 208,214 L 168,214 L 168,180 C 168,164 154,156 132,148 C 100,138 74,120 74,86 C 74,48 114,24 160,24 Z" fill="#5A5D60"/>
 						</svg>
-						<div class="footer-brand-meta">
-							<span class="footer-logo-text">Sweta Kadam</span>
-							<span class="footer-logo-sub">Full Stack Developer &amp; AI Engineer</span>
+						<div class="footer-brand-titles">
+							<span class="footer-name">Sweta Kadam</span>
+							<span class="footer-role">Full Stack Developer &amp; AI Engineer</span>
 						</div>
 					</a>
-					<p class="footer-pro-desc">
-						Building scalable web applications, high-performance full-stack architectures, and production AI workflows.
+					<p class="footer-desc">
+						Crafting high-performance full-stack web applications, cloud architectures, and intelligent AI agent workflows.
 					</p>
-					<div class="footer-pro-meta-tags">
-						<span class="meta-tag"><i class="fa-solid fa-location-dot"></i> Thane / Mumbai, India</span>
-						<span class="meta-tag status-available"><span class="pulse-dot"></span> Available Immediately</span>
+					<div class="footer-meta-pills">
+						<span class="footer-pill"><i class="fa-solid fa-location-dot"></i> Thane / Mumbai, India</span>
+						<span class="footer-pill status-open"><span class="pulse-dot"></span> Available Immediately</span>
 					</div>
 				</div>
 
-				<!-- Connect & Official Logos -->
-				<div class="footer-pro-connect">
-					<span class="connect-label">Connect &amp; Profiles</span>
-					<div class="footer-pro-logos-row">
+				<!-- Column 2: Quick Navigation -->
+				<div class="footer-col-nav">
+					<span class="footer-col-title">Navigation</span>
+					<ul class="footer-nav-list">
+						<li><a href="#journey">Journey &amp; Story</a></li>
+						<li><a href="#skills">Technical Arsenal</a></li>
+						<li><a href="#projects">Featured Projects</a></li>
+						<li><a href="#github-stats">Code &amp; Activity</a></li>
+						<li><a href="#achievements">Achievements</a></li>
+						<li><a href="Sweta_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume / CV (PDF)</a></li>
+					</ul>
+				</div>
+
+				<!-- Column 3: Connect & Pure Official Logos (No Boxes/Containers) -->
+				<div class="footer-col-connect">
+					<span class="footer-col-title">Connect &amp; Profiles</span>
+					
+					<!-- Pure Official Logos Row (Standalone, No Box Containers) -->
+					<div class="footer-pure-logos-row">
 						
-						<!-- GitHub Official -->
-						<a href="https://github.com/Shweta-Tech-creator" target="_blank" rel="noopener noreferrer" class="pro-logo-btn gh" title="GitHub: @Shweta-Tech-creator">
-							<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-							<span>GitHub</span>
+						<!-- Official GitHub Logo -->
+						<a href="https://github.com/Shweta-Tech-creator" target="_blank" rel="noopener noreferrer" class="pure-social-logo gh-logo" aria-label="GitHub Profile" title="GitHub: @Shweta-Tech-creator">
+							<svg width="28" height="28" viewBox="0 0 24 24" fill="#0F172A"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
 						</a>
 
-						<!-- LinkedIn Official -->
-						<a href="https://www.linkedin.com/in/sweta-kadam-5851a4323/" target="_blank" rel="noopener noreferrer" class="pro-logo-btn li" title="LinkedIn: Sweta Kadam">
-							<svg width="22" height="22" viewBox="0 0 24 24">
+						<!-- Official LinkedIn Logo -->
+						<a href="https://www.linkedin.com/in/sweta-kadam-5851a4323/" target="_blank" rel="noopener noreferrer" class="pure-social-logo li-logo" aria-label="LinkedIn Profile" title="LinkedIn: Sweta Kadam">
+							<svg width="28" height="28" viewBox="0 0 24 24">
 								<path fill="#0A66C2" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
 							</svg>
-							<span>LinkedIn</span>
 						</a>
 
-						<!-- Gmail Official -->
-						<a href="mailto:kadamsweta92@gmail.com" class="pro-logo-btn mail" title="Email: kadamsweta92@gmail.com">
-							<svg width="22" height="22" viewBox="0 0 256 193" fill="none">
+						<!-- Official Gmail Logo -->
+						<a href="mailto:kadamsweta92@gmail.com" class="pure-social-logo mail-logo" aria-label="Send Email" title="Email: kadamsweta92@gmail.com">
+							<svg width="28" height="22" viewBox="0 0 256 193" fill="none">
 								<path d="M58 192.5H7.7c-4.3 0-7.7-3.4-7.7-7.7V37.6c0-11.8 13.5-18.4 23-11.3L58 52.8v139.7z" fill="#4285F4"/>
 								<path d="M198 192.5h50.3c4.3 0 7.7-3.4 7.7-7.7V37.6c0-11.8-13.5-18.4-23-11.3L198 52.8v139.7z" fill="#34A853"/>
 								<path d="M198 52.8L128 105.3 58 52.8V0h140v52.8z" fill="#EA4335"/>
 								<path d="M58 0L0 43.6 23 60.9 58 34.6V0z" fill="#FBBC04"/>
 								<path d="M198 0l58 43.6-23 17.3-35-26.3V0z" fill="#C5221F"/>
 							</svg>
-							<span>Gmail</span>
+						</a>
+
+						<!-- Official Resume PDF Icon -->
+						<a href="Sweta_Resume.pdf" target="_blank" rel="noopener noreferrer" class="pure-social-logo pdf-logo" aria-label="Official Resume PDF" title="Open Resume PDF">
+							<svg width="26" height="28" viewBox="0 0 24 24" fill="#EF4444">
+								<path d="M19.5 2H4.5C3.12 2 2 3.12 2 4.5v15C2 20.88 3.12 22 4.5 22h15c1.38 0 2.5-1.12 2.5-2.5v-15C22 3.12 20.88 2 19.5 2zm-8.25 15.5H8.75v-7h2.5c1.24 0 2.25 1.01 2.25 2.25v2.5c0 1.24-1.01 2.25-2.25 2.25zm5.5 0h-2.5v-7h2.5c1.24 0 2.25 1.01 2.25 2.25v2.5c0 1.24-1.01 2.25-2.25 2.25z"/>
+							</svg>
 						</a>
 
 					</div>
 
-					<a href="mailto:kadamsweta92@gmail.com" class="footer-email-direct-pill" title="Click to send email">
-						<i class="fa-regular fa-envelope"></i>
-						<span>kadamsweta92@gmail.com</span>
-						<i class="fa-solid fa-arrow-up-right-from-square"></i>
-					</a>
+					<div class="footer-direct-contact">
+						<a href="mailto:kadamsweta92@gmail.com" class="footer-direct-link">
+							<i class="fa-regular fa-envelope"></i>
+							<span>kadamsweta92@gmail.com</span>
+						</a>
+						<a href="tel:+918828321619" class="footer-direct-link">
+							<i class="fa-solid fa-phone"></i>
+							<span>(+91) 8828321619</span>
+						</a>
+					</div>
 				</div>
 
 			</div>
@@ -2203,7 +2230,7 @@
 				<div class="footer-copy">
 					© 2026 <strong>Sweta Kadam</strong>. Built with precision, performance &amp; modern web standards.
 				</div>
-				<a href="#hero" class="footer-back-to-top" title="Scroll to Top">
+				<a href="#story-hero" class="footer-back-to-top" title="Scroll to Top">
 					<span>Back to top</span>
 					<i class="fa-solid fa-arrow-up"></i>
 				</a>
