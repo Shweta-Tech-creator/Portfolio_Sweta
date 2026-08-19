@@ -230,43 +230,53 @@
 	     ======================================================================= -->
 	<header class="header-nav">
 		<div class="container nav-inner">
-			<a href="#story-hero" class="nav-brand">
-				<!-- SK Monogram Logo -->
-				<div class="brand-sk-logo">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 44" width="46" height="34" aria-label="SK – Sweta Kadam" fill="none">
-						<defs>
-							<linearGradient id="sk-s-grad" x1="0" y1="0" x2="0" y2="1">
-								<stop offset="0%" stop-color="#2563eb"/>
-								<stop offset="100%" stop-color="#06b6d4"/>
-							</linearGradient>
-							<linearGradient id="sk-k-grad" x1="0" y1="0" x2="1" y2="1">
-								<stop offset="0%" stop-color="#7c3aed"/>
-								<stop offset="100%" stop-color="#2563eb"/>
-							</linearGradient>
-						</defs>
+			<a href="#story-hero" class="nav-brand" aria-label="Sweta Kadam Home">
+				<!-- Authentic 3D Isometric Ribbon SK Monogram Logo -->
+				<svg class="nav-sk-logo" viewBox="0 0 660 450" width="58" height="38" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SK Logo">
+					<defs>
+						<linearGradient id="sk-logo-shadow" x1="72.27%" y1="39.15%" x2="-4.6%" y2="39.15%">
+							<stop stop-color="#1e3a8a" offset="0%"/>
+							<stop stop-color="#0f172a" offset="100%"/>
+						</linearGradient>
+						<linearGradient id="sk-logo-cyan" x1="0%" y1="0%" x2="100%" y2="100%">
+							<stop stop-color="#00D2FF" offset="0%"/>
+							<stop stop-color="#3A7BD5" offset="100%"/>
+						</linearGradient>
+						<linearGradient id="sk-logo-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+							<stop stop-color="#2563EB" offset="0%"/>
+							<stop stop-color="#1D4ED8" offset="100%"/>
+						</linearGradient>
+					</defs>
+					
+					<!-- S (Extracted from 3D Isometric Ribbon Geometry) -->
+					<g id="nav-letter-S">
+						<!-- Top Chevron -->
+						<path d="M0,90 L150,0 L300,90 L300,170 L150,80 L0,170 Z" fill="url(#sk-logo-blue)" stroke="#2563eb" stroke-width="6" stroke-linejoin="round"/>
+						<!-- Bottom Chevron (Isometric flipped) -->
+						<path d="M0,352 L150,442 L300,352 L300,272 L150,362 L0,272 Z" fill="url(#sk-logo-blue)" stroke="#2563eb" stroke-width="6" stroke-linejoin="round"/>
+						<!-- Shadows -->
+						<path d="M0,90 L100,110 L0,170 Z" fill="url(#sk-logo-shadow)" opacity="0.75"/>
+						<path d="M200,332 L300,352 L300,272 Z" fill="url(#sk-logo-shadow)" opacity="0.75"/>
+						<!-- Middle Connecting Ribbon -->
+						<path d="M0,91 L150,181 L300,271 L300,351 L150,261 L0,171 Z" fill="url(#sk-logo-cyan)" stroke="url(#sk-logo-cyan)" stroke-width="6" stroke-linejoin="round"/>
+					</g>
 
-						<!-- S: Geometric flowing S with two arcs -->
-						<!-- Top arc of S -->
-						<path d="M 22 6
-							C 22 6, 8 4, 7 13
-							C 6 20, 14 22, 20 23
-							C 26 24, 24 27, 22 30
-							C 20 33, 12 35, 5 31"
-							stroke="url(#sk-s-grad)" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/>
-
-						<!-- K: Spine + two diagonal arms -->
-						<!-- K spine (vertical bar) -->
-						<line x1="32" y1="6" x2="32" y2="38" stroke="url(#sk-k-grad)" stroke-width="3.8" stroke-linecap="round"/>
-						<!-- K top arm (upper diagonal going upper-right) -->
-						<line x1="32" y1="22" x2="55" y2="6" stroke="url(#sk-k-grad)" stroke-width="3.8" stroke-linecap="round"/>
-						<!-- K bottom arm (lower diagonal going lower-right) -->
-						<line x1="32" y1="22" x2="55" y2="38" stroke="url(#sk-k-grad)" stroke-width="3.8" stroke-linecap="round"/>
-					</svg>
-				</div>
-				<div class="brand-text">
-					<span class="brand-name">Sweta Kadam</span>
-					<span class="brand-title">Junior Developer / Full Stack Developer</span>
-				</div>
+					<!-- K (Engineered in Matching 3D Isometric Ribbon Geometry) -->
+					<g id="nav-letter-K" transform="translate(340, 0)">
+						<!-- Vertical Stem -->
+						<path d="M0,54 L90,0 L90,388 L0,442 Z" fill="url(#sk-logo-blue)" stroke="#2563eb" stroke-width="6" stroke-linejoin="round"/>
+						<!-- Bevel Highlight on Stem -->
+						<path d="M0,54 L90,0 L90,20 L0,74 Z" fill="#60A5FA" opacity="0.85"/>
+						<!-- Bottom Arm (Behind) -->
+						<path d="M90,236 L300,362 L300,442 L90,316 Z" fill="url(#sk-logo-blue)" stroke="#2563eb" stroke-width="6" stroke-linejoin="round"/>
+						<!-- Bottom Arm Shadow Under Top Arm -->
+						<path d="M90,236 L150,258 L90,316 Z" fill="url(#sk-logo-shadow)" opacity="0.75"/>
+						<!-- Top Arm (In Front - Cyan Gradient) -->
+						<path d="M90,126 L300,0 L300,80 L90,206 Z" fill="url(#sk-logo-cyan)" stroke="url(#sk-logo-cyan)" stroke-width="6" stroke-linejoin="round"/>
+						<!-- Top Arm Shadow Under Stem -->
+						<path d="M90,126 L140,140 L90,206 Z" fill="url(#sk-logo-shadow)" opacity="0.45"/>
+					</g>
+				</svg>
 			</a>
 
 			<ul class="nav-links">
