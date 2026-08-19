@@ -145,38 +145,6 @@
 				window.location.href = `mailto:${email}`;
 			});
 		};
-
-		window.handleContactSubmit = function(e) {
-			e.preventDefault();
-			const submitBtn = document.getElementById('contactSubmitBtn');
-			const toast = document.getElementById('formSuccessToast');
-			const name = (document.getElementById('contactName') || {}).value || '';
-			const email = (document.getElementById('contactEmail') || {}).value || '';
-			const msg = (document.getElementById('contactMessage') || {}).value || '';
-
-			if (submitBtn) {
-				submitBtn.disabled = true;
-				submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>Sending Message...</span>';
-			}
-
-			setTimeout(() => {
-				if (submitBtn) {
-					submitBtn.innerHTML = '<i class="fa-solid fa-check"></i> <span>Sent Successfully!</span>';
-					submitBtn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
-				}
-				if (toast) {
-					toast.classList.add('is-visible');
-				}
-
-				// Prefilled mailto draft
-				const mailtoSubject = encodeURIComponent(`Portfolio Message from ${name}`);
-				const mailtoBody = encodeURIComponent(`Hi Sweta,\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${msg}\n\nBest regards,\n${name}`);
-				
-				setTimeout(() => {
-					window.location.href = `mailto:kadamsweta92@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`;
-				}, 1200);
-			}, 900);
-		};
 	</script>
 </head>
 <body>
@@ -1867,7 +1835,7 @@
 
 					<!-- Right Column: Attached Form (Name, Email, Message) -->
 					<div class="contact-attached-form-pane">
-						<form id="contactForm" class="contact-innovative-form" onsubmit="handleContactSubmit(event)">
+						<form id="contactForm" class="contact-innovative-form">
 							
 							<div class="form-header-box">
 								<h3 class="form-card-title">Send a Direct Message</h3>

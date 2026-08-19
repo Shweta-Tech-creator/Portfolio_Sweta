@@ -258,7 +258,7 @@
 
 			// Loading State
 			submitBtn.disabled = true;
-			submitBtn.innerHTML = '<span>Saving to MongoDB... <i class="fa-solid fa-spinner fa-spin" style="margin-left: 6px;"></i></span>';
+			submitBtn.innerHTML = '<span>Sending Message... <i class="fa-solid fa-spinner fa-spin" style="margin-left: 6px;"></i></span>';
 			submitBtn.style.opacity = '0.85';
 
 			// Determine API endpoint (supports relative /api, localhost:3000, or 127.0.0.1)
@@ -304,13 +304,14 @@
 
 			if (savedSuccessfully) {
 				// Success Feedback
-				submitBtn.innerHTML = '<span>Stored in MongoDB ✓</span>';
+				submitBtn.disabled = true;
+				submitBtn.innerHTML = '<span>Message Sent Successfully! ✓</span>';
 				submitBtn.style.background = '#10b981';
 				submitBtn.style.borderColor = '#10b981';
 				submitBtn.style.opacity = '1';
 
 				if (toast) {
-					toast.innerHTML = '<i class="fa-solid fa-circle-check"></i> Thank you ' + name.split(' ')[0] + '! Your message was saved to MongoDB.';
+					toast.innerHTML = '<i class="fa-solid fa-circle-check"></i> Thank you! Your message was received and saved to MongoDB.';
 					toast.classList.add('active');
 					setTimeout(() => toast.classList.remove('active'), 5000);
 				}
@@ -319,7 +320,7 @@
 
 				setTimeout(() => {
 					submitBtn.disabled = false;
-					submitBtn.innerHTML = originalBtnHtml;
+					submitBtn.innerHTML = '<span class="btn-text">Send Message</span> <span class="btn-icon-plane"><i class="fa-solid fa-paper-plane"></i></span>';
 					submitBtn.style.background = '';
 					submitBtn.style.borderColor = '';
 					submitBtn.style.opacity = '';
