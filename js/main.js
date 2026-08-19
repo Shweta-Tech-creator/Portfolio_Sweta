@@ -1027,9 +1027,10 @@
 		if (!roleEl) return;
 
 		const ROLES = [
-			'Junior Developer',
 			'Full Stack Developer',
-			'AI Developer'
+			'B.Tech CSE Student (AI & Data Science)',
+			'MERN Stack Engineer',
+			'Software Engineering Intern'
 		];
 
 		let currentIndex = 0;
