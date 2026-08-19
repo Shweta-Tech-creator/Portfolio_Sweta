@@ -3355,45 +3355,18 @@ body.modal-open {
 	max-width: 380px;
 }
 
-.footer-meta-pills {
-	display: flex;
-	align-items: center;
-	gap: 0.65rem;
-	flex-wrap: wrap;
-}
-
-.footer-pill {
+.footer-location {
 	display: inline-flex;
 	align-items: center;
-	gap: 6px;
-	font-size: 0.78rem;
+	gap: 8px;
+	font-size: 0.86rem;
 	font-weight: 600;
-	color: #475569;
-	background: #f8fafc;
-	border: 1px solid #e2e8f0;
-	padding: 0.35rem 0.8rem;
-	border-radius: 8px;
-}
-
-.footer-pill i {
 	color: #64748b;
-	font-size: 0.75rem;
 }
 
-.footer-pill.status-open {
-	background: #ecfdf5;
-	border-color: #a7f3d0;
-	color: #059669;
-	font-weight: 700;
-}
-
-.footer-pill .pulse-dot {
-	width: 7px;
-	height: 7px;
-	border-radius: 50%;
-	background: #10b981;
-	box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
-	animation: livePulse 2s infinite;
+.footer-location i {
+	color: #0072ce;
+	font-size: 0.82rem;
 }
 
 /* Column 2: Navigation */
