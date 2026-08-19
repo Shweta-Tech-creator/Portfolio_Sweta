@@ -1527,7 +1527,7 @@ body {
 	transform-origin: center center;
 }
 
-/* FINAL HERO REVEAL: Clean Authentic Brand & Actions (No Artificial Box) */
+/* FINAL HERO REVEAL: Clean Authentic Brand & Actions */
 .final-hero {
 	position: absolute;
 	width: 100%;
@@ -1539,7 +1539,8 @@ body {
 	justify-content: center;
 	text-align: center;
 	opacity: 0;
-	pointer-events: none;
+	z-index: 50;
+	pointer-events: auto;
 }
 
 .final-hero.interactive {
@@ -1576,6 +1577,9 @@ body {
 	font-size: 0.95rem;
 	color: #475569;
 	font-weight: 600;
+	position: relative;
+	z-index: 55;
+	pointer-events: auto;
 }
 
 .hero-contact-link {
@@ -1583,6 +1587,9 @@ body {
 	text-decoration: none;
 	font-weight: 700;
 	transition: color 0.2s ease;
+	position: relative;
+	z-index: 55;
+	pointer-events: auto;
 }
 
 .hero-contact-link:hover {
@@ -1606,6 +1613,16 @@ body {
 	gap: 1rem;
 	justify-content: center;
 	margin-bottom: 2.5rem;
+	position: relative;
+	z-index: 60;
+	pointer-events: auto !important;
+}
+
+.final-hero-cta .btn {
+	position: relative;
+	z-index: 70;
+	pointer-events: auto !important;
+	cursor: pointer !important;
 }
 
 .final-hero-metrics {

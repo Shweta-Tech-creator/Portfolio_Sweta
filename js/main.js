@@ -1388,11 +1388,34 @@
 		});
 	}
 
+	/**
+	 * Smooth scroll handler for all internal anchor links
+	 */
+	function initSmoothScrollLinks() {
+		document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+			anchor.addEventListener('click', function(e) {
+				const targetId = this.getAttribute('href');
+				if (targetId && targetId !== '#' && targetId.length > 1) {
+					const targetEl = document.querySelector(targetId);
+					if (targetEl) {
+						e.preventDefault();
+						if (lenis) {
+							lenis.scrollTo(targetEl, { offset: -20, duration: 1.2 });
+						} else {
+							targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+						}
+					}
+				}
+			});
+		});
+	}
+
 	// Initialize all on DOM ready with fault isolation
 	function init() {
 		const modules = [
 			['CertMarquee', initCertMarquee],
 			['Lenis', initLenis],
+			['SmoothScrollLinks', initSmoothScrollLinks],
 			['Spotlight', initSpotlight],
 			['3DCardTilt', init3DCardTilt],
 			['ScrollAnimations', initScrollAnimations],
