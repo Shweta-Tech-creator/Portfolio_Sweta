@@ -5,6 +5,11 @@ scratch_cache/
 __pycache__/
 *.pyc
 
+# Node Modules & Env
+node_modules/
+.env
+npm-debug.log*
+
 # OS Files
 .DS_Store
 Thumbs.db

@@ -234,24 +234,113 @@
 	});
 
 	/**
-	 * 9. Contact Form Submission Feedback
+	 * 9. Contact Form Submission with Local MongoDB Storage
 	 */
 	if (contactForm) {
-		contactForm.addEventListener('submit', (e) => {
+		contactForm.addEventListener('submit', async (e) => {
 			e.preventDefault();
+
+			const nameInput = document.getElementById('contactName');
+			const emailInput = document.getElementById('contactEmail');
+			const messageInput = document.getElementById('contactMessage');
 			const submitBtn = contactForm.querySelector('button[type="submit"]');
-			const originalText = submitBtn.innerHTML;
+			const toast = document.getElementById('formSuccessToast');
+			const originalBtnHtml = submitBtn.innerHTML;
 
+			const name = nameInput ? nameInput.value.trim() : '';
+			const email = emailInput ? emailInput.value.trim() : '';
+			const message = messageInput ? messageInput.value.trim() : '';
+
+			if (!name || !email || !message) {
+				alert('Please fill in all required fields (Name, Email, and Message).');
+				return;
+			}
+
+			// Loading State
 			submitBtn.disabled = true;
-			submitBtn.innerHTML = '<span>Message Sent Successfully! ✓</span>';
-			submitBtn.style.background = '#10b981';
+			submitBtn.innerHTML = '<span>Saving to MongoDB... <i class="fa-solid fa-spinner fa-spin" style="margin-left: 6px;"></i></span>';
+			submitBtn.style.opacity = '0.85';
 
-			setTimeout(() => {
+			// Determine API endpoint (supports relative /api, localhost:3000, or 127.0.0.1)
+			const endpoints = [
+				'/api/contact',
+				'http://localhost:3000/api/contact',
+				'http://127.0.0.1:3000/api/contact',
+				'http://localhost:5000/api/contact'
+			];
+
+			let savedSuccessfully = false;
+			let responseData = null;
+			let lastErrorMessage = '';
+
+			for (const endpoint of endpoints) {
+				try {
+					const controller = new AbortController();
+					const timeoutId = setTimeout(() => controller.abort(), 4000);
+
+					const res = await fetch(endpoint, {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+							'Accept': 'application/json'
+						},
+						body: JSON.stringify({ name, email, message }),
+						signal: controller.signal
+					});
+					clearTimeout(timeoutId);
+
+					if (res.ok) {
+						responseData = await res.json();
+						savedSuccessfully = true;
+						break;
+					} else {
+						const errData = await res.json().catch(() => ({}));
+						lastErrorMessage = errData.error || `Server responded with ${res.status}`;
+					}
+				} catch (err) {
+					lastErrorMessage = err.message;
+				}
+			}
+
+			if (savedSuccessfully) {
+				// Success Feedback
+				submitBtn.innerHTML = '<span>Stored in MongoDB ✓</span>';
+				submitBtn.style.background = '#10b981';
+				submitBtn.style.borderColor = '#10b981';
+				submitBtn.style.opacity = '1';
+
+				if (toast) {
+					toast.innerHTML = '<i class="fa-solid fa-circle-check"></i> Thank you ' + name.split(' ')[0] + '! Your message was saved to MongoDB.';
+					toast.classList.add('active');
+					setTimeout(() => toast.classList.remove('active'), 5000);
+				}
+
 				contactForm.reset();
+
+				setTimeout(() => {
+					submitBtn.disabled = false;
+					submitBtn.innerHTML = originalBtnHtml;
+					submitBtn.style.background = '';
+					submitBtn.style.borderColor = '';
+					submitBtn.style.opacity = '';
+				}, 3500);
+			} else {
+				// Error feedback
+				console.warn('MongoDB submission notice:', lastErrorMessage);
 				submitBtn.disabled = false;
-				submitBtn.innerHTML = originalText;
-				submitBtn.style.background = '';
-			}, 3000);
+				submitBtn.innerHTML = '<span>Submission Error (Retry)</span>';
+				submitBtn.style.background = '#ef4444';
+				submitBtn.style.borderColor = '#ef4444';
+				submitBtn.style.opacity = '1';
+
+				alert('Could not connect to MongoDB server. Please make sure the local server is running with `npm start`. (Details: ' + lastErrorMessage + ')');
+
+				setTimeout(() => {
+					submitBtn.innerHTML = originalBtnHtml;
+					submitBtn.style.background = '';
+					submitBtn.style.borderColor = '';
+				}, 4000);
+			}
 		});
 	}
 
