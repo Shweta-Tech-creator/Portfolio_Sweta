@@ -150,18 +150,18 @@ body {
 	padding: 4px 0;
 }
 
-/* 3D Isometric SK Monogram Logo in Navbar */
+/* SK Monogram Logo in Navbar */
 .nav-sk-logo {
 	display: block;
-	width: 58px;
-	height: 38px;
-	transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.35s ease;
-	filter: drop-shadow(0 2px 6px rgba(37, 99, 235, 0.22));
+	width: 60px;
+	height: 39px;
+	transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+	filter: drop-shadow(0 2px 5px rgba(0, 114, 206, 0.18));
 }
 
 .nav-brand:hover .nav-sk-logo {
-	transform: scale(1.1);
-	filter: drop-shadow(0 4px 14px rgba(0, 210, 255, 0.5));
+	transform: scale(1.08);
+	filter: drop-shadow(0 4px 12px rgba(0, 114, 206, 0.38));
 }
 
 .nav-links {
