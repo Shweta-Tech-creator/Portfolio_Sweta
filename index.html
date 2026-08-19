@@ -250,7 +250,9 @@
 			</ul>
 
 			<div class="nav-cta">
-				<button class="btn btn-outline btn-sm open-resume-btn">View Resume</button>
+				<a href="Sweta_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm" title="View & Download Resume">
+					<i class="fa-solid fa-file-pdf" style="color: #ef4444; margin-right: 4px;"></i> Resume
+				</a>
 				<a href="#contact" class="btn btn-primary btn-sm">Get In Touch</a>
 			</div>
 		</div>
@@ -602,12 +604,13 @@
 							<span>Explore 4+ Projects</span>
 							<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
 						</a>
-						<button class="btn btn-outline open-resume-btn">
-							<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-							<span>View Curriculum Vitae</span>
-						</button>
-						<a href="#contact" class="btn btn-outline">
-							<span>Get In Touch</span>
+						<a href="Sweta_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-outline" title="Open Official Resume PDF">
+							<i class="fa-solid fa-file-pdf" style="color: #ef4444; font-size: 1.05rem;"></i>
+							<span>View Resume</span>
+						</a>
+						<a href="Sweta_Resume.pdf" download="Sweta_Resume.pdf" class="btn btn-outline" title="Download Resume PDF directly">
+							<i class="fa-solid fa-download" style="color: #2563eb; font-size: 0.95rem;"></i>
+							<span>Download CV</span>
 						</a>
 					</div>
 
@@ -1902,9 +1905,17 @@
 	     ======================================================================= -->
 	<div id="resumeModal" class="modal-overlay">
 		<div class="modal-container" style="max-width: 780px;">
-			<div class="modal-header">
+			<div class="modal-header" style="display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;">
 				<h3 class="modal-title">Sweta Kadam — Curriculum Vitae</h3>
-				<button id="closeResumeModal" class="modal-close-btn" aria-label="Close modal">&times;</button>
+				<div style="display: flex; align-items: center; gap: 0.5rem;">
+					<a href="Sweta_Resume.pdf" download="Sweta_Resume.pdf" class="btn btn-primary btn-sm" title="Download Official Resume PDF">
+						<i class="fa-solid fa-download"></i> Download PDF
+					</a>
+					<a href="Sweta_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm" title="Open Fullscreen PDF">
+						<i class="fa-solid fa-arrow-up-right-from-square"></i> Open Tab
+					</a>
+					<button id="closeResumeModal" class="modal-close-btn" aria-label="Close modal">&times;</button>
+				</div>
 			</div>
 			<div class="modal-body" style="padding: 2rem;">
 				
@@ -2040,9 +2051,16 @@
 					<div><strong>Deployment:</strong> Vercel, Firebase Hosting, Render</div>
 				</div>
 
-				<div style="text-align: center; padding-top: 1rem; border-top: 1px solid #e2e8f0; display: flex; justify-content: center; gap: 1rem;">
-					<a href="mailto:kadamsweta92@gmail.com?subject=Opportunity%20Discussion%20-%20Sweta%20Kadam" class="btn btn-primary btn-sm">Contact Directly</a>
-					<button onclick="window.print()" class="btn btn-outline btn-sm">Print / Save as PDF</button>
+				<div style="text-align: center; padding-top: 1.25rem; border-top: 1px solid #e2e8f0; display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap;">
+					<a href="Sweta_Resume.pdf" download="Sweta_Resume.pdf" class="btn btn-primary btn-sm">
+						<i class="fa-solid fa-download"></i> Download Resume (PDF)
+					</a>
+					<a href="Sweta_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+						<i class="fa-solid fa-arrow-up-right-from-square"></i> Open in New Tab
+					</a>
+					<a href="mailto:kadamsweta92@gmail.com?subject=Opportunity%20Discussion%20-%20Sweta%20Kadam" class="btn btn-outline btn-sm">
+						<i class="fa-regular fa-envelope"></i> Contact Directly
+					</a>
 				</div>
 			</div>
 		</div>
