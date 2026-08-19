@@ -504,6 +504,80 @@ body {
 	transform: translateX(-50%) translateY(0);
 }
 
+.hero-secondary-bio {
+	font-size: 0.96rem;
+	color: #64748b;
+	line-height: 1.65;
+	margin-top: 0.85rem;
+	font-weight: 500;
+}
+
+.hero-quick-badges {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	margin-top: 1.15rem;
+}
+
+.hero-quick-pill {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 0.78rem;
+	font-weight: 700;
+	color: #334155;
+	background: #f8fafc;
+	border: 1px solid #e2e8f0;
+	padding: 0.35rem 0.75rem;
+	border-radius: 8px;
+	transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-quick-pill:hover {
+	background: #eff6ff;
+	border-color: #bfdbfe;
+	color: #2563eb;
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(37, 99, 235, 0.12);
+}
+
+.hero-quick-pill i {
+	color: #2563eb;
+	font-size: 0.76rem;
+}
+
+.story-ch1-actions {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	margin-top: 1.5rem;
+	flex-wrap: wrap;
+}
+
+.hero-resume-inline-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 0.65rem 1.15rem;
+	background: #f8fafc;
+	border: 1px solid #e2e8f0;
+	border-radius: var(--radius-full);
+	color: #0f172a;
+	font-size: 0.78rem;
+	font-weight: 700;
+	text-decoration: none;
+	transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+	box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.hero-resume-inline-btn:hover {
+	background: #eff6ff;
+	border-color: #bfdbfe;
+	color: #2563eb;
+	transform: translateY(-2px);
+	box-shadow: 0 6px 18px rgba(37, 99, 235, 0.15);
+}
+
 /* Animated Magnetic Scroll Pill Button */
 .story-scroll-pill-btn {
 	display: inline-flex;
