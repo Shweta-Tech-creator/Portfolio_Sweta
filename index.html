@@ -1,0 +1,2177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sweta Kadam | Junior Developer / Full Stack Developer</title>
+	<meta name="description" content="Portfolio of Sweta Kadam - Junior Developer / Full Stack Developer with hands-on experience building scalable, responsive web applications, RESTful APIs, and database integrations.">
+
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+	<!-- Font Awesome Icons -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+	<!-- Devicon Official Tech Logos -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="css/preloader.css?v=20260819">
+	<link rel="stylesheet" href="css/style.css?v=20260819">
+	<link rel="stylesheet" href="css/components.css?v=20260819">
+
+	<!-- Direct Global Certificate Modal Engine -->
+	<script>
+		window.isCertMarqueePaused = false;
+
+		window.toggleCertMarqueePause = function(btn) {
+			const track = document.getElementById('certTrack');
+			const playPauseBtn = btn || document.getElementById('certPlayPauseBtn');
+			if (!track) return;
+
+			window.isCertMarqueePaused = !window.isCertMarqueePaused;
+			if (window.isCertMarqueePaused) {
+				track.style.animationPlayState = 'paused';
+				track.classList.add('is-paused');
+				if (playPauseBtn) {
+					playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+					playPauseBtn.title = 'Resume Auto Scroll';
+				}
+			} else {
+				track.style.animationPlayState = 'running';
+				track.classList.remove('is-paused');
+				if (playPauseBtn) {
+					playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+					playPauseBtn.title = 'Pause Auto Scroll';
+				}
+			}
+		};
+
+		window.scrollCertMarquee = function(dir) {
+			const viewport = document.getElementById('certViewport');
+			if (viewport) {
+				viewport.scrollBy({ left: dir * 380, behavior: 'smooth' });
+			}
+		};
+
+		window.openCertModal = function(elOrSrc, title, issuer, date, desc) {
+			try {
+				let img = '', t = '', iss = '', d = '', de = '';
+				if (typeof elOrSrc === 'object' && elOrSrc !== null) {
+					const card = elOrSrc.closest ? (elOrSrc.closest('.cert-popup-card') || elOrSrc) : elOrSrc;
+					img = card.getAttribute('data-img') || '';
+					t = card.getAttribute('data-title') || 'Certificate';
+					iss = card.getAttribute('data-issuer') || 'Verified Credential';
+					d = card.getAttribute('data-date') || '';
+					de = card.getAttribute('data-desc') || '';
+				} else {
+					img = elOrSrc || '';
+					t = title || 'Certificate';
+					iss = issuer || 'Verified Credential';
+					d = date || '';
+					de = desc || '';
+				}
+				const modal = document.getElementById('certModal');
+				if (!modal) return;
+				const imgEl = document.getElementById('certModalImg');
+				const titleEl = document.getElementById('certModalTitle');
+				const issuerEl = document.getElementById('certModalIssuer');
+				const dateEl = document.getElementById('certModalDate');
+				const descEl = document.getElementById('certModalDesc');
+				const actionEl = document.getElementById('certModalAction');
+
+				if (imgEl) imgEl.src = img;
+				if (titleEl) titleEl.textContent = t;
+				if (issuerEl) issuerEl.textContent = iss;
+				if (dateEl) dateEl.innerHTML = '<i class="fa-regular fa-calendar"></i> ' + d;
+				if (descEl) descEl.textContent = de;
+				if (actionEl) actionEl.href = img || '#';
+
+				modal.style.cssText = 'display: flex !important; opacity: 1 !important; visibility: visible !important; pointer-events: auto !important; z-index: 9999999 !important;';
+				modal.classList.add('is-open');
+				document.body.classList.add('modal-open');
+			} catch (err) {
+				console.error('Error opening certificate modal:', err);
+			}
+		};
+
+		window.closeCertModal = function(e) {
+			if (e && e.target && e.target !== e.currentTarget && !e.target.closest('.cert-modal-close')) {
+				return;
+			}
+			const modal = document.getElementById('certModal');
+			if (modal) {
+				modal.style.cssText = 'display: none !important; opacity: 0 !important; visibility: hidden !important; pointer-events: none !important;';
+				modal.classList.remove('is-open');
+				document.body.classList.remove('modal-open');
+			}
+		};
+
+		// Interactive Contact Form Helpers
+		window.selectInquiryTopic = function(btn) {
+			const chips = document.querySelectorAll('.chip-btn');
+			chips.forEach(c => c.classList.remove('is-active'));
+			btn.classList.add('is-active');
+			const topicInput = document.getElementById('selectedTopic');
+			if (topicInput) {
+				topicInput.value = btn.getAttribute('data-topic') || '';
+			}
+		};
+
+		window.updateCharCount = function(textarea) {
+			const countEl = document.getElementById('msgCharCount');
+			if (countEl && textarea) {
+				countEl.textContent = textarea.value.length;
+			}
+		};
+
+		window.copyEmailAddress = function(pillEl) {
+			const email = 'kadamsweta92@gmail.com';
+			navigator.clipboard.writeText(email).then(() => {
+				const orig = pillEl.innerHTML;
+				pillEl.innerHTML = '<i class="fa-solid fa-check"></i> Copied! 🎉';
+				pillEl.style.background = '#10b981';
+				pillEl.style.color = '#ffffff';
+				pillEl.style.borderColor = '#10b981';
+				setTimeout(() => {
+					pillEl.innerHTML = orig;
+					pillEl.style.background = '';
+					pillEl.style.color = '';
+					pillEl.style.borderColor = '';
+				}, 2200);
+			}).catch(() => {
+				window.location.href = `mailto:${email}`;
+			});
+		};
+
+		window.handleContactSubmit = function(e) {
+			e.preventDefault();
+			const submitBtn = document.getElementById('contactSubmitBtn');
+			const toast = document.getElementById('formSuccessToast');
+			const name = (document.getElementById('contactName') || {}).value || '';
+			const email = (document.getElementById('contactEmail') || {}).value || '';
+			const msg = (document.getElementById('contactMessage') || {}).value || '';
+
+			if (submitBtn) {
+				submitBtn.disabled = true;
+				submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>Sending Message...</span>';
+			}
+
+			setTimeout(() => {
+				if (submitBtn) {
+					submitBtn.innerHTML = '<i class="fa-solid fa-check"></i> <span>Sent Successfully!</span>';
+					submitBtn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+				}
+				if (toast) {
+					toast.classList.add('is-visible');
+				}
+
+				// Prefilled mailto draft
+				const mailtoSubject = encodeURIComponent(`Portfolio Message from ${name}`);
+				const mailtoBody = encodeURIComponent(`Hi Sweta,\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${msg}\n\nBest regards,\n${name}`);
+				
+				setTimeout(() => {
+					window.location.href = `mailto:kadamsweta92@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`;
+				}, 1200);
+			}, 900);
+		};
+	</script>
+</head>
+<body>
+
+	<!-- Ambient Radial Glow Layer -->
+	<div class="ambient-glow-layer"></div>
+
+	<!-- =======================================================================
+	     PRELOADER: 3D Rolling Ball + Floating Tech Symbols Orbit + 'SWETA KADAM'
+	     ======================================================================= -->
+	<div id="preloader-wrapper">
+		<div class="preloader-stage">
+			
+			<!-- Part 1: 3D Rolling Ball on Track -->
+			<div class="ball-loader-container">
+				<div class="pl">
+					<div class="pl__outer-ring"></div>
+					<div class="pl__inner-ring"></div>
+					<div class="pl__track-cover"></div>
+					<div class="pl__ball">
+						<div class="pl__ball-texture"></div>
+						<div class="pl__ball-outer-shadow"></div>
+						<div class="pl__ball-inner-shadow"></div>
+						<div class="pl__ball-side-shadows"></div>
+					</div>
+				</div>
+				<div class="ball-status-text">
+					<span class="ball-status-dot"></span>
+					<span>Turning complex ideas into elegant code</span>
+				</div>
+			</div>
+
+			<!-- Part 2: Prominent Floating Language Badges Container -->
+			<div id="langBurstContainer" class="lang-burst-container"></div>
+
+			<!-- Part 3: Pixel Canvas Logo Section for 'SWETA KADAM' -->
+			<div class="canvas-logo-section">
+				<div class="canvas-content-wrapper">
+					<canvas id="pixelLogoCanvas"></canvas>
+					<div class="logo-desc">
+						Junior Developer / Full Stack Developer
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- =======================================================================
+	     HEADER & NAVIGATION
+	     ======================================================================= -->
+	<header class="header-nav">
+		<div class="container nav-inner">
+			<a href="#story-hero" class="nav-brand">
+				<div class="brand-avatar">
+					<img src="images/profile.jpg" alt="Sweta Kadam" class="brand-avatar-img">
+				</div>
+				<div class="brand-text">
+					<span class="brand-name">Sweta Kadam</span>
+					<span class="brand-title">Junior Developer / Full Stack Developer</span>
+				</div>
+			</a>
+
+			<ul class="nav-links">
+				<li><a href="#journey">Journey</a></li>
+				<li><a href="#skills">Skills</a></li>
+				<li><a href="#projects">Projects</a></li>
+				<li><a href="#github-stats">Activity</a></li>
+				<li><a href="#achievements">Achievements</a></li>
+				<li><a href="#contact">Contact</a></li>
+			</ul>
+
+			<div class="nav-cta">
+				<button class="btn btn-outline btn-sm open-resume-btn">View Resume</button>
+				<a href="#contact" class="btn btn-primary btn-sm">Get In Touch</a>
+			</div>
+		</div>
+	</header>
+
+	<!-- =======================================================================
+	     MAIN CONTENT
+	     ======================================================================= -->
+	<main>
+		<!-- 1. SCROLL-DRIVEN STORYTELLING HERO SECTION (Thalassic Reveal Style) -->
+		<section id="story-hero" class="story-hero-section">
+			
+			<!-- Background Photo Layers (You can replace images in images/ folder) -->
+			<div class="story-bg-layer">
+				<!-- Layer 1: Opening Vision (hero-bg.svg / hero-bg.jpg) -->
+				<div class="story-bg-img story-bg-1 active" style="background-image: url('images/hero-bg.svg');"></div>
+				<!-- Layer 2: Engineering Depth (chapter-bg-1.svg / chapter-bg-1.jpg) -->
+				<div class="story-bg-img story-bg-2" style="background-image: url('images/chapter-bg-1.svg');"></div>
+				<!-- Layer 3: High-Tech Developer Workspace (hero-tech-bg.jpg) -->
+				<div class="story-bg-img story-bg-3" style="background-image: url('images/hero-tech-bg.jpg');"></div>
+				<!-- Cinematic Gradient Overlay for text contrast -->
+				<div class="story-bg-overlay"></div>
+			</div>
+
+			<div class="story-container">
+				
+				<!-- Chapter 1: The Beginning (Text on Left + Animated Portrait on Right) -->
+				<div class="story-chapter story-ch1">
+					<div class="story-ch1-text">
+						<!-- Dynamic Rotating Role Headline (Single Element - Zero Overlap) -->
+						<div class="hero-role-wrapper" style="margin-bottom: 1.15rem;">
+							<span id="heroRoleDisplay" class="hero-role-display">Junior Developer</span>
+						</div>
+
+						<!-- Kinetic Animated Heading (Words Come One-by-One) -->
+						<h2 class="story-title-large kinetic-hero-title">
+							<span class="kinetic-line">
+								<span class="kinetic-word">Hi,</span>
+								<span class="kinetic-word">I'm</span>
+							</span>
+							<span class="kinetic-line">
+								<span class="kinetic-word highlight interactive-name" id="heroNameText">Sweta Kadam</span>
+							</span>
+						</h2>
+
+						<!-- Interactive Bio (Animates Words One-by-One) -->
+						<p class="hero-interactive-bio" style="font-size: 1.05rem; color: #475569; max-width: 490px; margin-top: 1.15rem; line-height: 1.7; font-weight: 500;">
+							<span class="bio-word">Results-driven</span>
+							<span class="bio-word">Full</span>
+							<span class="bio-word">Stack</span>
+							<span class="bio-word">Developer</span>
+							<span class="bio-word">with</span>
+							<span class="bio-word">hands-on</span>
+							<span class="bio-word">experience</span>
+							<span class="bio-word">building</span>
+							<span class="bio-word interactive-tag" data-tag="React • Node • Express">scalable</span>,
+							<span class="bio-word interactive-tag" data-tag="Fluid UI/UX • Mobile-First">responsive</span>
+							<span class="bio-word">web</span>
+							<span class="bio-word">applications,</span>
+							<span class="bio-word interactive-tag" data-tag="Secure Endpoints • GraphQL">RESTful</span>
+							<span class="bio-word interactive-tag" data-tag="Secure Endpoints • GraphQL">APIs</span>,
+							<span class="bio-word">and</span>
+							<span class="bio-word interactive-tag" data-tag="MongoDB • MySQL • SQL">database</span>
+							<span class="bio-word interactive-tag" data-tag="MongoDB • MySQL • SQL">integrations</span>.
+						</p>
+
+						<!-- Animated Magnetic Scroll Button -->
+						<div class="story-scroll-wrap" style="margin-top: 1.6rem;">
+							<a href="#about" class="story-scroll-pill-btn">
+								<span class="scroll-dot-pulse"></span>
+								<span class="scroll-btn-text">SCROLL TO EXPLORE CV &amp; PROJECTS</span>
+								<span class="scroll-arrow-bounce">↓</span>
+							</a>
+						</div>
+					</div>
+
+					<div class="story-ch1-portrait">
+						<div class="portrait-sketch-wrapper">
+							<!-- 0. Dynamic Colorful Sparks Canvas (Behind Photo) -->
+							<canvas id="portraitSparkCanvas" class="portrait-spark-canvas"></canvas>
+
+							<!-- 2. Pure Frameless Photo Container -->
+							<div class="portrait-sketch-box">
+								<!-- Layer 1: Hand-Drawn Sketch (Draws in First) -->
+								<div class="sketch-layer">
+									<img src="images/sweta-sketch.png" alt="Sweta Kadam Sketch" class="img-sketch-art">
+								</div>
+
+								<!-- Moving Pencil Drawing Stylus Beam -->
+								<div class="sketch-pencil-beam"></div>
+
+								<!-- Layer 2: Real Color Photograph (Blooms in over the sketch) -->
+								<div class="photo-color-layer">
+									<img src="images/sweta-real.png" alt="Sweta Kadam" class="img-color-photo">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Chapter 2: Interactive Full-Stack Architecture (MacBook on Left + Text on Right) -->
+				<div class="story-chapter story-ch2">
+					<div class="ch2-showcase-grid">
+						
+						<!-- Left: 3D Opening MacBook Pro Studio -->
+						<div class="ch2-visual-column">
+							<div class="macbook-3d-stage" id="macbook3dStage">
+								<div class="macbook-3d-rig" id="macbook3dRig">
+									
+									<!-- Aluminum Base Deck -->
+									<div class="macbook-deck-part">
+										<img src="images/macbook-base.png" alt="MacBook Base" class="macbook-base-img">
+									</div>
+
+									<!-- 3D Opening Display Lid -->
+									<div class="macbook-lid-part" id="macbook3dLid">
+										<img src="images/macbook-lid.png" alt="Sweta Kadam MacBook Full-Stack Studio" class="macbook-lid-img">
+									</div>
+
+								</div>
+							</div>
+						</div>
+
+						<!-- Right: Headline, Description & Tech Stack Pills -->
+						<div class="ch2-text-column">
+							<div class="ch2-badge">
+								<span class="ch2-badge-dot"></span>
+								<span>Full-Stack Architecture &amp; APIs</span>
+							</div>
+
+							<h2 class="story-title-large ch2-title">
+								Frontend, Backend &amp;
+								<span class="highlight-gradient">RESTful APIs.</span>
+							</h2>
+
+							<p class="ch2-description">
+								Delivering reliable, high-throughput full-stack solutions with clean UI/UX, microsecond endpoints, and optimized database queries.
+							</p>
+
+							<!-- Interactive Tech Stack Pills -->
+							<div class="ch2-tech-stack">
+								<span class="ch2-tech-item"><span class="tech-icon">⚛️</span> React.js</span>
+								<span class="ch2-tech-item"><span class="tech-icon">🟢</span> Node.js</span>
+								<span class="ch2-tech-item"><span class="tech-icon">⚡</span> Express.js</span>
+								<span class="ch2-tech-item"><span class="tech-icon">🍃</span> MongoDB</span>
+								<span class="ch2-tech-item"><span class="tech-icon">🐬</span> MySQL</span>
+								<span class="ch2-tech-item"><span class="tech-icon">🔌</span> REST APIs</span>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<!-- Chapter 3: Experience & Academic Milestones (Top-Centered Text + Image Below) -->
+				<div class="story-chapter story-ch3">
+					<div class="ch3-centered-layout">
+						
+						<!-- Upper Middle: Headline & Academic Summary -->
+						<div class="ch3-header-centered">
+							<h2 class="story-title-large ch3-title">
+								Academic Excellence &amp; <span class="highlight-gradient">CS Foundations.</span>
+							</h2>
+
+							<p class="ch3-description-centered">
+								Pursuing B.Tech in Computer Science &amp; Engineering at <strong>ITM Skills University</strong> with a <strong>9.14 CGPA</strong> — mastering Data Structures, Algorithms, Operating Systems, Database Management, and Software Engineering principles.
+							</p>
+
+							<div class="ch3-highlights-row centered-row">
+								<div class="ch3-stat-badge">
+									<span class="stat-big">9.14</span>
+									<span class="stat-sub">ITM B.Tech CGPA</span>
+								</div>
+								<div class="ch3-stat-badge">
+									<span class="stat-big">87.0%</span>
+									<span class="stat-sub">10th SSC Grade</span>
+								</div>
+								<div class="ch3-stat-badge">
+									<span class="stat-big">72.5%</span>
+									<span class="stat-sub">12th HSC Grade</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- Below: 3D Computer Science Foundations Artwork (Data Structures, Algorithms & Systems) -->
+						<div class="ch3-image-centered">
+							<div class="cs-foundations-card" id="csFoundationsCard">
+								<img src="images/cs-foundations.jpg" alt="Computer Science Foundations - Data Structures, Algorithms & Systems" class="cs-foundations-img">
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<!-- Chapter 4: 4+ Production & AI Projects Showcase -->
+				<div class="story-chapter story-ch4">
+					<div class="ch4-header-centered">
+						<h2 class="story-title-large ch4-title">
+							Full-Stack &amp; <span class="highlight-gradient">AI Applications.</span>
+						</h2>
+						<p class="ch4-subtext">
+							Architected and deployed scalable full-stack web applications with real-time AI capabilities, RESTful services, and robust databases.
+						</p>
+					</div>
+
+					<!-- 4 Projects Interactive Grid Cards with Real Screenshots -->
+					<div class="ch4-projects-grid">
+						
+						<!-- Project 1: SceneSync (AI Film Pre-Production Studio) -->
+						<div class="ch4-project-card" data-project="scenesync">
+							<div class="ch4-card-thumb">
+								<img src="images/project-scenesync.png" alt="SceneSync Live Interface" class="ch4-thumb-img">
+								<div class="ch4-thumb-overlay">
+									<a href="https://scene-sync-tau.vercel.app" target="_blank" rel="noopener noreferrer" class="ch4-link-btn primary">Live App ↗</a>
+									<a href="https://github.com/Shweta-Tech-creator/SceneSync" target="_blank" rel="noopener noreferrer" class="ch4-link-btn outline">GitHub ↗</a>
+								</div>
+							</div>
+							<div class="ch4-card-content">
+								<div class="ch4-card-top">
+									<span class="ch4-card-tag">🎬 AI Film Studio</span>
+									<span class="ch4-live-indicator">● Live</span>
+								</div>
+								<h3 class="ch4-card-title">SceneSync</h3>
+								<p class="ch4-card-desc">
+									Collaborative film pre-production platform with real-time script editing, storyboard canvas (Fabric.js), AI scene breakdown via Google Gemini, and shot sequencing.
+								</p>
+								<div class="ch4-card-tech">
+									<span>React</span>
+									<span>Gemini AI</span>
+									<span>Socket.IO</span>
+									<span>Node/Express</span>
+									<span>Cloudinary</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- Project 2: Externship (Internship Platform) -->
+						<div class="ch4-project-card" data-project="externship">
+							<div class="ch4-card-thumb">
+								<img src="images/project-externship.png" alt="Externship Live Platform" class="ch4-thumb-img">
+								<div class="ch4-thumb-overlay">
+									<a href="https://externship-webapp-cua4.onrender.com" target="_blank" rel="noopener noreferrer" class="ch4-link-btn primary">Live App ↗</a>
+									<a href="https://github.com/Shweta-Tech-creator" target="_blank" rel="noopener noreferrer" class="ch4-link-btn outline">GitHub ↗</a>
+								</div>
+							</div>
+							<div class="ch4-card-content">
+								<div class="ch4-card-top">
+									<span class="ch4-card-tag">💼 Career Portal</span>
+									<span class="ch4-live-indicator">● Live</span>
+								</div>
+								<h3 class="ch4-card-title">Externship</h3>
+								<p class="ch4-card-desc">
+									Full-stack internship portal for student applications and admin management with role-based applicant tracking, candidate filtering, and document storage.
+								</p>
+								<div class="ch4-card-tech">
+									<span>React.js</span>
+									<span>Node.js</span>
+									<span>Express</span>
+									<span>MongoDB</span>
+									<span>Cloudinary</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- Project 3: LinkOrbit (Social Aggregator) -->
+						<div class="ch4-project-card" data-project="linkorbit">
+							<div class="ch4-card-thumb">
+								<img src="images/project-linkorbit.png" alt="LinkOrbit Social Aggregator" class="ch4-thumb-img">
+								<div class="ch4-thumb-overlay">
+									<a href="https://link-orbit-one.vercel.app" target="_blank" rel="noopener noreferrer" class="ch4-link-btn primary">Live App ↗</a>
+									<a href="https://github.com/Shweta-Tech-creator" target="_blank" rel="noopener noreferrer" class="ch4-link-btn outline">GitHub ↗</a>
+								</div>
+							</div>
+							<div class="ch4-card-content">
+								<div class="ch4-card-top">
+									<span class="ch4-card-tag">🪐 Social Hub</span>
+									<span class="ch4-live-indicator">● Live</span>
+								</div>
+								<h3 class="ch4-card-title">LinkOrbit</h3>
+								<p class="ch4-card-desc">
+									Social aggregator unifying feeds from Instagram, Twitter, YouTube, and LinkedIn into a single interactive feed with multi-platform post management.
+								</p>
+								<div class="ch4-card-tech">
+									<span>React.js</span>
+									<span>Node.js</span>
+									<span>Express</span>
+									<span>MongoDB</span>
+									<span>Socket.io</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- Project 4: WeSafe (Women Safety App) -->
+						<div class="ch4-project-card" data-project="wesafe">
+							<div class="ch4-card-thumb">
+								<img src="images/project-wesafe.png" alt="WeSafe Women Safety App" class="ch4-thumb-img phone-view">
+								<div class="ch4-thumb-overlay">
+									<a href="#contact" class="ch4-link-btn primary">Demo / Info ↗</a>
+									<a href="https://github.com/Shweta-Tech-creator" target="_blank" rel="noopener noreferrer" class="ch4-link-btn outline">GitHub ↗</a>
+								</div>
+							</div>
+							<div class="ch4-card-content">
+								<div class="ch4-card-top">
+									<span class="ch4-card-tag">🛡️ Mobile Guardian</span>
+									<span class="ch4-live-indicator">● Mobile</span>
+								</div>
+								<h3 class="ch4-card-title">WeSafe</h3>
+								<p class="ch4-card-desc">
+									Women safety mobile application featuring Smart Watch &amp; Safety Pendant IoT sync, Manual SOS, Safe Words triggers, Stealth Mode, and emergency alerts.
+								</p>
+								<div class="ch4-card-tech">
+									<span>Flutter</span>
+									<span>Dart</span>
+									<span>Firebase</span>
+									<span>IoT Bluetooth</span>
+									<span>Geolocation</span>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<!-- FINAL HERO REVEAL: Clean Authentic Brand & Action CTAs -->
+				<div class="final-hero">
+					<div class="final-hero-badge">
+						<span class="status-pill" style="margin-bottom: 0;">
+							<span class="status-pill-dot"></span>
+							<span>Full Stack Developer • AI &amp; Web Solutions</span>
+						</span>
+					</div>
+
+					<h1 class="final-hero-title">
+						Sweta <span class="text-gradient">Kadam</span>
+					</h1>
+
+					<div class="final-hero-contact-row">
+						<span>📍 Thane, Maharashtra</span>
+						<span>•</span>
+						<a href="mailto:kadamsweta92@gmail.com" class="hero-contact-link">kadamsweta92@gmail.com</a>
+						<span>•</span>
+						<span>📞 (+91) 8828321619</span>
+					</div>
+
+					<p class="final-hero-sub">
+						Specializing in building scalable full-stack web applications, real-time AI integrations, and responsive cloud services with modern JavaScript frameworks, robust REST APIs, and high-performance databases.
+					</p>
+
+					<div class="final-hero-cta">
+						<a href="#projects" class="btn btn-primary">
+							<span>Explore 4+ Projects</span>
+							<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+						</a>
+						<button class="btn btn-outline open-resume-btn">
+							<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+							<span>View Curriculum Vitae</span>
+						</button>
+						<a href="#contact" class="btn btn-outline">
+							<span>Get In Touch</span>
+						</a>
+					</div>
+
+					<div class="final-hero-metrics">
+						<div class="metric-item">
+							<span class="metric-num">4+</span>
+							<span class="metric-label">Production &amp; AI Apps</span>
+						</div>
+						<div class="metric-item">
+							<span class="metric-num">15+</span>
+							<span class="metric-label">Technologies &amp; Frameworks</span>
+						</div>
+						<div class="metric-item">
+							<span class="metric-num">100%</span>
+							<span class="metric-label">Scalable &amp; Clean Architecture</span>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</section>
+
+
+
+		<!-- =======================================================================
+		     LUXURY INTERACTIVE EDUCATION & EXPERIENCE JOURNEY
+		     ======================================================================= -->
+		<section id="journey" class="section section-journey">
+			<div class="container">
+				<div class="section-header journey-animated-header">
+					<span class="section-eyebrow float-bounce-pill">
+						<span class="pill-pulse-dot"></span>
+						Milestones &amp; Evolution
+					</span>
+					<h2 class="section-title flow-bounce-headline" id="journeyHeadline">
+						<span class="bounce-word"><span class="b-char">E</span><span class="b-char">d</span><span class="b-char">u</span><span class="b-char">c</span><span class="b-char">a</span><span class="b-char">t</span><span class="b-char">i</span><span class="b-char">o</span><span class="b-char">n</span></span>
+						<span class="bounce-word amp-word"><span class="b-char">&amp;</span></span>
+						<span class="bounce-word"><span class="b-char">P</span><span class="b-char">r</span><span class="b-char">o</span><span class="b-char">f</span><span class="b-char">e</span><span class="b-char">s</span><span class="b-char">s</span><span class="b-char">i</span><span class="b-char">o</span><span class="b-char">n</span><span class="b-char">a</span><span class="b-char">l</span></span>
+						<span class="bounce-word highlight-journey-word"><span class="b-char">J</span><span class="b-char">o</span><span class="b-char">u</span><span class="b-char">r</span><span class="b-char">n</span><span class="b-char">e</span><span class="b-char">y</span></span>
+					</h2>
+					<p class="section-desc flow-fade-desc">
+						A chronological roadmap tracing my academic foundation in Computer Science, full-stack leadership, and AI engineering roles.
+					</p>
+				</div>
+
+				<div class="modern-timeline-container">
+					<!-- Animated Central Track Line -->
+					<div class="timeline-beam-track">
+						<div class="timeline-beam-progress" id="timelineBeamProgress"></div>
+					</div>
+
+					<div class="timeline-nodes-list">
+
+						<!-- Milestone 1: 2022 - 10th SSC -->
+						<div class="timeline-row row-left" data-year="2022">
+							<div class="timeline-col-card">
+								<div class="luxury-milestone-card theme-cyan">
+									<div class="milestone-card-header">
+										<span class="milestone-tag">Secondary Education</span>
+										<span class="milestone-period">2022</span>
+									</div>
+									<h3 class="milestone-title">10th Grade (SSC)</h3>
+									<h4 class="milestone-org">R.S. Deokar English Medium School</h4>
+									<p class="milestone-desc">
+										Built a strong academic foundation with distinction in mathematics and science, setting the analytical baseline for engineering.
+									</p>
+									<div class="milestone-highlight-pill">
+										<span class="pill-icon">🏆</span>
+										<span><strong>87.00%</strong> Distinction Standing</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="timeline-center-node theme-cyan">
+								<div class="node-ring">
+									<span class="node-icon">🎒</span>
+								</div>
+							</div>
+
+							<div class="timeline-col-year">
+								<div class="year-showcase theme-cyan">
+									<span class="year-num">2022</span>
+									<span class="year-label">Foundational Roots</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- Milestone 2: 2024 - 12th HSC -->
+						<div class="timeline-row row-right" data-year="2024">
+							<div class="timeline-col-year">
+								<div class="year-showcase theme-sky">
+									<span class="year-num">2024</span>
+									<span class="year-label">Higher Secondary</span>
+								</div>
+							</div>
+
+							<div class="timeline-center-node theme-sky">
+								<div class="node-ring">
+									<span class="node-icon">📚</span>
+								</div>
+							</div>
+
+							<div class="timeline-col-card">
+								<div class="luxury-milestone-card theme-sky">
+									<div class="milestone-card-header">
+										<span class="milestone-tag">Higher Secondary</span>
+										<span class="milestone-period">2024</span>
+									</div>
+									<h3 class="milestone-title">12th Grade (HSC)</h3>
+									<h4 class="milestone-org">Narayana E-Techno Junior College, Thane</h4>
+									<p class="milestone-desc">
+										Specialized in Science stream with deep focus on Computer Science, Mathematics, and Physics, establishing rigorous problem-solving skills.
+									</p>
+									<div class="milestone-highlight-pill">
+										<span class="pill-icon">📊</span>
+										<span><strong>72.50%</strong> Science Stream</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Milestone 3: 2024–Now - B.Tech CSE -->
+						<div class="timeline-row row-left" data-year="2024 — Present">
+							<div class="timeline-col-card">
+								<div class="luxury-milestone-card theme-blue active-academic">
+									<div class="milestone-card-header">
+										<span class="milestone-tag">Undergraduate Engineering</span>
+										<span class="milestone-period">2024 — Present</span>
+									</div>
+									<h3 class="milestone-title">B.Tech in Computer Science &amp; Engineering</h3>
+									<h4 class="milestone-org">ITM Skills University</h4>
+									<p class="milestone-desc">
+										Mastering core CS foundations: Data Structures &amp; Algorithms, Operating Systems, Database Management Systems, OOPs, and Computer Networks.
+									</p>
+									<div class="milestone-highlight-pill star-highlight">
+										<span class="pill-icon">⭐</span>
+										<span><strong>9.14 CGPA</strong> Academic Excellence</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="timeline-center-node theme-blue">
+								<div class="node-ring">
+									<span class="node-icon">🏛️</span>
+								</div>
+							</div>
+
+							<div class="timeline-col-year">
+								<div class="year-showcase theme-blue">
+									<span class="year-num">2024+</span>
+									<span class="year-label">Computer Science</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- Milestone 4: 2025 - Saphire -->
+						<div class="timeline-row row-right" data-year="2025">
+							<div class="timeline-col-year">
+								<div class="year-showcase theme-indigo">
+									<span class="year-num">2025</span>
+									<span class="year-label">Product &amp; Code</span>
+								</div>
+							</div>
+
+							<div class="timeline-center-node theme-indigo">
+								<div class="node-ring">
+									<span class="node-icon">💼</span>
+								</div>
+							</div>
+
+							<div class="timeline-col-card">
+								<div class="luxury-milestone-card theme-indigo active-lead">
+									<div class="milestone-card-header">
+										<span class="milestone-tag">Full-Stack &amp; Product Leadership</span>
+										<span class="milestone-period">2025</span>
+									</div>
+									<h3 class="milestone-title">Full Stack Developer &amp; Product Manager</h3>
+									<h4 class="milestone-org">Saphire</h4>
+									<p class="milestone-desc">
+										Led product feature roadmaps, technical sprint planning, and full-stack engineering. Managed end-to-end web architectures, API design, and client deliverables.
+									</p>
+									<div class="milestone-tech-pills">
+										<span>Full-Stack Architecture</span>
+										<span>Product Roadmapping</span>
+										<span>Agile Leadership</span>
+										<span>API Design</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Milestone 5: Recent - Softvyank -->
+						<div class="timeline-row row-left" data-year="Recent">
+							<div class="timeline-col-card">
+								<div class="luxury-milestone-card theme-emerald">
+									<div class="milestone-card-header">
+										<span class="milestone-tag">Internship</span>
+										<span class="milestone-period">2 Months Duration • Completed</span>
+									</div>
+									<h3 class="milestone-title">Full Stack Developer Intern</h3>
+									<h4 class="milestone-org">Softvyank</h4>
+									<p class="milestone-desc">
+										Developed responsive web UI components in React, created backend RESTful APIs using Node.js/Express, and managed database schemas for production client deliverables.
+									</p>
+									<div class="milestone-tech-pills">
+										<span>React</span>
+										<span>Node.js</span>
+										<span>Express</span>
+										<span>MongoDB</span>
+										<span>REST APIs</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="timeline-center-node theme-emerald">
+								<div class="node-ring">
+									<span class="node-icon">💻</span>
+								</div>
+							</div>
+
+							<div class="timeline-col-year">
+								<div class="year-showcase theme-emerald">
+									<span class="year-num">Recent</span>
+									<span class="year-label">Full-Stack Intern</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- Milestone 6: Current - Cogniq AI -->
+						<div class="timeline-row row-right" data-year="Current">
+							<div class="timeline-col-year">
+								<div class="year-showcase theme-violet">
+									<span class="year-num">NOW</span>
+									<span class="year-label">AI Engineering</span>
+								</div>
+							</div>
+
+							<div class="timeline-center-node theme-violet">
+								<div class="node-ring">
+									<span class="node-icon">🤖</span>
+								</div>
+							</div>
+
+							<div class="timeline-col-card">
+								<div class="luxury-milestone-card theme-violet active-ai">
+									<div class="milestone-card-header">
+										<span class="milestone-tag ai-tag">Artificial Intelligence</span>
+										<span class="milestone-period active-now">🟢 Current Active Role</span>
+									</div>
+									<h3 class="milestone-title">AI Developer Intern</h3>
+									<h4 class="milestone-org">Cogniq AI</h4>
+									<p class="milestone-desc">
+										Developing intelligent AI applications, Large Language Model (LLM) workflows, Google Gemini AI prompt pipelines, and real-time interactive AI web services.
+									</p>
+									<div class="milestone-tech-pills">
+										<span>AI Workflows</span>
+										<span>LLM Prompting</span>
+										<span>Google Gemini</span>
+										<span>Real-Time Agents</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- 3. TECHNICAL SKILLS MATRIX SECTION -->
+		<section id="skills" class="section">
+			<div class="container">
+				<div class="section-header">
+					<span class="section-eyebrow">Interactive Tech Universe</span>
+					<h2 class="section-title">Skills &amp; Technology Stack</h2>
+					<p class="section-desc">
+						Interactive orbiting universe and live moving stream of programming languages, frameworks, cloud platforms, and AI tools.
+					</p>
+				</div>
+
+				<!-- =======================================================
+				     CIRCULAR MOVING TECH STACK ECOSYSTEM
+				     ======================================================= -->
+				<div class="circular-tech-ecosystem">
+
+					<!-- 1. Interactive Orbiting Tech Rings (Planetary Rotating Circles) -->
+					<div class="tech-orbit-stage">
+						
+						<!-- Central Core Badge -->
+						<div class="orbit-center-badge">
+							<div class="core-glow-aura"></div>
+							<div class="core-inner-disc">
+								<div class="core-icon-ring">
+									<i class="fa-solid fa-laptop-code"></i>
+								</div>
+								<span class="core-title">Tech Engine</span>
+								<span class="core-sub">Full-Stack &amp; AI</span>
+							</div>
+						</div>
+
+						<!-- Orbit Ring 1: Languages (Inner - 6 Moving Circles) -->
+						<div class="orbit-ring ring-1">
+							<div class="orbit-planet-item pos-1" data-tech="Python">
+								<div class="planet-circle">
+									<i class="devicon-python-plain colored"></i>
+								</div>
+								<span class="planet-tooltip">Python</span>
+							</div>
+							<div class="orbit-planet-item pos-2" data-tech="JavaScript">
+								<div class="planet-circle">
+									<i class="devicon-javascript-plain colored"></i>
+								</div>
+								<span class="planet-tooltip">JavaScript</span>
+							</div>
+							<div class="orbit-planet-item pos-3" data-tech="TypeScript">
+								<div class="planet-circle">
+									<i class="devicon-typescript-plain colored"></i>
+								</div>
+								<span class="planet-tooltip">TypeScript</span>
+							</div>
+							<div class="orbit-planet-item pos-4" data-tech="Java">
+								<div class="planet-circle">
+									<i class="devicon-java-plain colored"></i>
+								</div>
+								<span class="planet-tooltip">Java</span>
+							</div>
+							<div class="orbit-planet-item pos-5" data-tech="C++">
+								<div class="planet-circle">
+									<i class="devicon-cplusplus-plain colored"></i>
+								</div>
+								<span class="planet-tooltip">C++</span>
+							</div>
+							<div class="orbit-planet-item pos-6" data-tech="SQL">
+								<div class="planet-circle">
+									<i class="devicon-mysql-plain colored"></i>
+								</div>
+								<span class="planet-tooltip">SQL</span>
+							</div>
+						</div>
+
+						<!-- Orbit Ring 2: Frameworks & Web (Middle - 7 Moving Circles) -->
+						<div class="orbit-ring ring-2">
+							<div class="orbit-planet-item pos-1" data-tech="React.js">
+								<div class="planet-circle">
+									<i class="devicon-react-original colored"></i>
+								</div>
+								<span class="planet-tooltip">React.js</span>
+							</div>
+							<div class="orbit-planet-item pos-2" data-tech="Node.js">
+								<div class="planet-circle">
+									<i class="devicon-nodejs-plain colored"></i>
+								</div>
+								<span class="planet-tooltip">Node.js</span>
+							</div>
+							<div class="orbit-planet-item pos-3" data-tech="Next.js">
+								<div class="planet-circle">
+									<i class="devicon-nextjs-plain" style="color: #0f172a;"></i>
+								</div>
+								<span class="planet-tooltip">Next.js</span>
+							</div>
+							<div class="orbit-planet-item pos-4" data-tech="Express.js">
+								<div class="planet-circle">
+									<i class="devicon-express-original" style="color: #0f172a;"></i>
+								</div>
+								<span class="planet-tooltip">Express.js</span>
+							</div>
+							<div class="orbit-planet-item pos-5" data-tech="Tailwind CSS">
+								<div class="planet-circle">
+									<i class="devicon-tailwindcss-plain colored"></i>
+								</div>
+								<span class="planet-tooltip">Tailwind CSS</span>
+							</div>
+							<div class="orbit-planet-item pos-6" data-tech="HTML5">
+								<div class="planet-circle">
+									<i class="devicon-html5-plain colored"></i>
+								</div>
+								<span class="planet-tooltip">HTML5</span>
+							</div>
+							<div class="orbit-planet-item pos-7" data-tech="CSS3">
+								<div class="planet-circle">
+									<i class="devicon-css3-plain colored"></i>
+								</div>
+								<span class="planet-tooltip">CSS3</span>
+							</div>
+						</div>
+
+						<!-- Orbit Ring 3: AI, Cloud & DB (Outer - 8 Moving Circles) -->
+						<div class="orbit-ring ring-3">
+							<div class="orbit-planet-item pos-1" data-tech="Google Gemini AI">
+								<div class="planet-circle ai-planet">
+									<i class="fa-solid fa-wand-magic-sparkles" style="color: #7c3aed;"></i>
+								</div>
+								<span class="planet-tooltip">Gemini AI</span>
+							</div>
+							<div class="orbit-planet-item pos-2" data-tech="MongoDB">
+								<div class="planet-circle">
+									<i class="devicon-mongodb-plain colored"></i>
+								</div>
+								<span class="planet-tooltip">MongoDB</span>
+							</div>
+							<div class="orbit-planet-item pos-3" data-tech="PostgreSQL">
+								<div class="planet-circle">
+									<i class="devicon-postgresql-plain colored"></i>
+								</div>
+								<span class="planet-tooltip">PostgreSQL</span>
+							</div>
+							<div class="orbit-planet-item pos-4" data-tech="Docker">
+								<div class="planet-circle">
+									<i class="devicon-docker-plain colored"></i>
+								</div>
+								<span class="planet-tooltip">Docker</span>
+							</div>
+							<div class="orbit-planet-item pos-5" data-tech="Git & GitHub">
+								<div class="planet-circle">
+									<i class="devicon-github-original" style="color: #0f172a;"></i>
+								</div>
+								<span class="planet-tooltip">Git &amp; GitHub</span>
+							</div>
+							<div class="orbit-planet-item pos-6" data-tech="AWS Cloud">
+								<div class="planet-circle">
+									<i class="devicon-amazonwebservices-plain-wordmark colored"></i>
+								</div>
+								<span class="planet-tooltip">AWS</span>
+							</div>
+							<div class="orbit-planet-item pos-7" data-tech="Firebase">
+								<div class="planet-circle">
+									<i class="devicon-firebase-plain colored"></i>
+								</div>
+								<span class="planet-tooltip">Firebase</span>
+							</div>
+							<div class="orbit-planet-item pos-8" data-tech="Postman">
+								<div class="planet-circle">
+									<i class="devicon-postman-plain colored"></i>
+								</div>
+								<span class="planet-tooltip">Postman</span>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+		<!-- 4. CINEMATIC APPLE-STYLE STACKING FEATURED PROJECTS -->
+		<section id="projects" class="section section-bg-alt">
+			<div class="container">
+				<div class="section-header projects-animated-header">
+					<span class="section-eyebrow float-bounce-pill">
+						<span class="pill-pulse-dot"></span>
+						Production Portfolio
+					</span>
+					<h2 class="section-title flow-bounce-headline" id="projectsHeadline">
+						<span class="bounce-word"><span class="b-char">F</span><span class="b-char">e</span><span class="b-char">a</span><span class="b-char">t</span><span class="b-char">u</span><span class="b-char">r</span><span class="b-char">e</span><span class="b-char">d</span></span>
+						<span class="bounce-word"><span class="b-char">P</span><span class="b-char">r</span><span class="b-char">o</span><span class="b-char">d</span><span class="b-char">u</span><span class="b-char">c</span><span class="b-char">t</span><span class="b-char">i</span><span class="b-char">o</span><span class="b-char">n</span></span>
+						<span class="bounce-word amp-word"><span class="b-char">&amp;</span></span>
+						<span class="bounce-word highlight-ai-word"><span class="b-char">A</span><span class="b-char">I</span></span>
+						<span class="bounce-word highlight-journey-word"><span class="b-char">P</span><span class="b-char">r</span><span class="b-char">o</span><span class="b-char">j</span><span class="b-char">e</span><span class="b-char">c</span><span class="b-char">t</span><span class="b-char">s</span></span>
+					</h2>
+					<p class="section-desc flow-fade-desc">
+						Real-world full-stack applications, intelligent AI systems, and automated platforms engineered with scalable architecture.
+					</p>
+				</div>
+
+				<!-- Apple-Style Stacking Card Deck -->
+				<div class="cards-stack-wrapper">
+					
+					<!-- Card 1: SceneSync (AI Film Pre-Production Studio) -->
+					<div class="stack-card" style="top: 90px;">
+						<div class="stack-card-body">
+							<div>
+								<div class="stack-card-meta">
+									<span class="stack-category-pill">🎬 AI &amp; Film Studio • 2025</span>
+									<span class="stack-card-num">01 / 04</span>
+								</div>
+								<h3 class="stack-card-title">SceneSync — Collaborative Film Pre-Production Platform</h3>
+								<p class="stack-card-desc">
+									A cloud-based film pre-production platform streamlining the creative process from script to screen. Real-time script editing with screenplay formatting, interactive storyboard canvas (Fabric.js), AI-powered scene breakdown via Google Gemini API, timeline shot sequencing with audio, and team comments.
+								</p>
+								<div class="stack-tech-list">
+									<span class="stack-tech-pill">React &amp; Vite</span>
+									<span class="stack-tech-pill">Google Gemini AI</span>
+									<span class="stack-tech-pill">Socket.IO</span>
+									<span class="stack-tech-pill">Fabric.js</span>
+									<span class="stack-tech-pill">Node &amp; Express</span>
+									<span class="stack-tech-pill">MongoDB Atlas</span>
+									<span class="stack-tech-pill">Cloudinary</span>
+									<span class="stack-tech-pill">Brevo SMTP</span>
+								</div>
+							</div>
+							<div class="stack-actions">
+								<a href="https://scene-sync-tau.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+									<span>Live App Demo</span>
+									<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+								</a>
+								<a href="https://github.com/Shweta-Tech-creator/SceneSync" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+									<span>GitHub Code</span>
+									<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+								</a>
+							</div>
+						</div>
+						<div class="stack-card-visual">
+							<div class="project-real-mockup">
+								<div class="mockup-browser-bar">
+									<span class="mockup-dot red"></span>
+									<span class="mockup-dot yellow"></span>
+									<span class="mockup-dot green"></span>
+									<span class="mockup-url">scene-sync-tau.vercel.app</span>
+								</div>
+								<img src="images/project-scenesync.png" alt="SceneSync Web Application Live Interface" class="mockup-screenshot-img">
+							</div>
+						</div>
+					</div>
+
+					<!-- Card 2: Externship (Internship Platform) -->
+					<div class="stack-card" style="top: 120px;">
+						<div class="stack-card-body">
+							<div>
+								<div class="stack-card-meta">
+									<span class="stack-category-pill">💼 Full-Stack Platform • 2025</span>
+									<span class="stack-card-num">02 / 04</span>
+								</div>
+								<h3 class="stack-card-title">Externship — Internship Application &amp; Admin System</h3>
+								<p class="stack-card-desc">
+									End-to-end internship portal enabling students to discover and apply for industry internships, upload resumes, and track status in real time. Features a comprehensive admin portal to post roles, filter applicants, and manage review pipelines.
+								</p>
+								<div class="stack-tech-list">
+									<span class="stack-tech-pill">React.js</span>
+									<span class="stack-tech-pill">Node.js</span>
+									<span class="stack-tech-pill">Express.js</span>
+									<span class="stack-tech-pill">MongoDB Atlas</span>
+									<span class="stack-tech-pill">Cloudinary Storage</span>
+									<span class="stack-tech-pill">JWT Authentication</span>
+									<span class="stack-tech-pill">RESTful APIs</span>
+								</div>
+							</div>
+							<div class="stack-actions">
+								<a href="https://externship-webapp-cua4.onrender.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+									<span>Live App Demo</span>
+									<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+								</a>
+								<a href="https://github.com/Shweta-Tech-creator" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+									<span>GitHub Code</span>
+									<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+								</a>
+							</div>
+						</div>
+						<div class="stack-card-visual">
+							<div class="project-real-mockup">
+								<div class="mockup-browser-bar">
+									<span class="mockup-dot red"></span>
+									<span class="mockup-dot yellow"></span>
+									<span class="mockup-dot green"></span>
+									<span class="mockup-url">externship-webapp-cua4.onrender.com</span>
+								</div>
+								<img src="images/project-externship.png" alt="Externship Platform Live Interface" class="mockup-screenshot-img">
+							</div>
+						</div>
+					</div>
+
+					<!-- Card 3: LinkOrbit (Social Aggregator) -->
+					<div class="stack-card" style="top: 150px;">
+						<div class="stack-card-body">
+							<div>
+								<div class="stack-card-meta">
+									<span class="stack-category-pill">🪐 Social Aggregator • 2025</span>
+									<span class="stack-card-num">03 / 04</span>
+								</div>
+								<h3 class="stack-card-title">LinkOrbit — Unified Digital Social Aggregator</h3>
+								<p class="stack-card-desc">
+									Unified social management platform seamlessly connecting Instagram, Twitter, YouTube, LinkedIn, and Facebook into a single interactive dashboard. Real-time post interaction, scheduled updates, and multi-network analytics.
+								</p>
+								<div class="stack-tech-list">
+									<span class="stack-tech-pill">React.js</span>
+									<span class="stack-tech-pill">Node.js</span>
+									<span class="stack-tech-pill">Express.js</span>
+									<span class="stack-tech-pill">MongoDB</span>
+									<span class="stack-tech-pill">Socket.io</span>
+									<span class="stack-tech-pill">Cloudinary</span>
+									<span class="stack-tech-pill">REST APIs</span>
+								</div>
+							</div>
+							<div class="stack-actions">
+								<a href="https://link-orbit-one.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+									<span>Live App Demo</span>
+									<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+								</a>
+								<a href="https://github.com/Shweta-Tech-creator" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+									<span>GitHub Code</span>
+									<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+								</a>
+							</div>
+						</div>
+						<div class="stack-card-visual">
+							<div class="project-real-mockup">
+								<div class="mockup-browser-bar">
+									<span class="mockup-dot red"></span>
+									<span class="mockup-dot yellow"></span>
+									<span class="mockup-dot green"></span>
+									<span class="mockup-url">link-orbit-one.vercel.app</span>
+								</div>
+								<img src="images/project-linkorbit.png" alt="LinkOrbit Platform Live Interface" class="mockup-screenshot-img">
+							</div>
+						</div>
+					</div>
+
+					<!-- Card 4: WeSafe (Women Safety Guardian) -->
+					<div class="stack-card" style="top: 180px;">
+						<div class="stack-card-body">
+							<div>
+								<div class="stack-card-meta">
+									<span class="stack-category-pill">🛡️ Mobile &amp; IoT • 2025</span>
+									<span class="stack-card-num">04 / 04</span>
+								</div>
+								<h3 class="stack-card-title">WeSafe — Women Safety Guardian Application</h3>
+								<p class="stack-card-desc">
+									Cross-platform mobile application dedicated to women's personal safety. Integrates Smart Watch &amp; Safety Pendant IoT Bluetooth sync, one-touch Manual SOS, Safe Words voice activation, Evidence Journey tracking, Stealth Mode, and instant emergency alerts broadcast.
+								</p>
+								<div class="stack-tech-list">
+									<span class="stack-tech-pill">Flutter</span>
+									<span class="stack-tech-pill">Dart</span>
+									<span class="stack-tech-pill">Firebase</span>
+									<span class="stack-tech-pill">IoT Bluetooth Sync</span>
+									<span class="stack-tech-pill">Geolocation APIs</span>
+									<span class="stack-tech-pill">Voice Recognition</span>
+									<span class="stack-tech-pill">Mobile UI/UX</span>
+								</div>
+							</div>
+							<div class="stack-actions">
+								<a href="#contact" class="btn btn-primary btn-sm">
+									<span>Request Demo / APK</span>
+									<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+								</a>
+								<a href="https://github.com/Shweta-Tech-creator" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+									<span>GitHub Code</span>
+									<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+								</a>
+							</div>
+						</div>
+						<div class="stack-card-visual">
+							<div class="project-real-mockup phone-frame">
+								<div class="mockup-browser-bar">
+									<span class="mockup-dot red"></span>
+									<span class="mockup-dot yellow"></span>
+									<span class="mockup-dot green"></span>
+									<span class="mockup-url">WeSafe Mobile App (Flutter)</span>
+								</div>
+								<img src="images/project-wesafe.png" alt="WeSafe Mobile App Interface" class="mockup-screenshot-img">
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				</div>
+			</div>
+		</section>
+
+		<!-- 5. GITHUB STATS & ACTIVITY TRACKER -->
+		<section id="github-stats" class="section">
+			<div class="container">
+				<div class="section-header github-animated-header">
+					<span class="section-eyebrow float-bounce-pill">
+						<span class="pill-pulse-dot"></span>
+						Activity &amp; Open Source
+					</span>
+					<h2 class="section-title flow-bounce-headline" id="githubHeadline">
+						<span class="bounce-word highlight-ai-word"><span class="b-char">G</span><span class="b-char">i</span><span class="b-char">t</span><span class="b-char">H</span><span class="b-char">u</span><span class="b-char">b</span></span>
+						<span class="bounce-word"><span class="b-char">C</span><span class="b-char">o</span><span class="b-char">n</span><span class="b-char">t</span><span class="b-char">r</span><span class="b-char">i</span><span class="b-char">b</span><span class="b-char">u</span><span class="b-char">t</span><span class="b-char">i</span><span class="b-char">o</span><span class="b-char">n</span><span class="b-char">s</span></span>
+						<span class="bounce-word amp-word"><span class="b-char">&amp;</span></span>
+						<span class="bounce-word highlight-journey-word"><span class="b-char">F</span><span class="b-char">o</span><span class="b-char">c</span><span class="b-char">u</span><span class="b-char">s</span></span>
+					</h2>
+					<p class="section-desc flow-fade-desc">
+						Live open-source repositories, algorithmic momentum, and primary technology distribution.
+					</p>
+				</div>
+
+				<!-- GitHub Ecosystem Container -->
+				<div class="github-ecosystem-wrapper">
+
+					<!-- 1. Full-Width Exact GitHub Contribution Calendar (Auto-Cycling All Years) -->
+					<div class="gh-exact-heatmap-card bento-card">
+						<div class="gh-card-header-flex">
+							<div>
+								<span class="gh-badge-pill"><i class="fa-solid fa-code-commit" style="color: #2563eb;"></i> Yearly Contribution Momentum</span>
+								<h3 class="gh-card-heading" id="ghContributionTitle" style="font-size: 1.15rem; margin-top: 4px;">
+									<span class="gh-heat-num">189</span> Contributions in <span class="gh-heat-year">2026</span>
+								</h3>
+							</div>
+
+							<!-- Interactive Year Selector Tabs & Auto-Play Controls -->
+							<div class="gh-year-controls-flex">
+								<div class="gh-year-tabs-pill">
+									<button type="button" class="gh-year-btn active" data-year="2026">2026</button>
+									<button type="button" class="gh-year-btn" data-year="2025">2025</button>
+									<button type="button" class="gh-year-btn" data-year="2024">2024</button>
+								</div>
+								<button type="button" class="gh-cycle-toggle-btn active" id="ghAutoCycleToggle" title="Toggle Auto Cycle">
+									<i class="fa-solid fa-arrows-rotate fa-spin" style="--fa-animation-duration: 4s;"></i>
+									<span>Live Cycle</span>
+								</button>
+							</div>
+						</div>
+
+						<!-- Exact Vector SVG Contribution Chart Wrapper -->
+						<div class="gh-exact-svg-container" id="ghExactCalendarWrap">
+							<!-- Populated directly via JS with exact multi-year SVGs -->
+						</div>
+
+						<div class="gh-heatmap-footer-row">
+							<span class="gh-heat-meta-lbl" id="ghContributionPeriod">Activity: Jan 2026 – Present</span>
+							<div class="gh-heatmap-legend">
+								<span>Less</span>
+								<span class="gh-cell lvl-0"></span>
+								<span class="gh-cell lvl-1"></span>
+								<span class="gh-cell lvl-2"></span>
+								<span class="gh-cell lvl-3"></span>
+								<span class="gh-cell lvl-4"></span>
+								<span>More</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- 2. Two-Column Sub-Grid: Profile (Left) & Metrics/Languages (Right) -->
+					<div class="github-subgrid-row">
+
+						<!-- Left: Profile & Bio -->
+						<div class="gh-native-card gh-card-profile bento-card">
+							<div class="gh-profile-head">
+								<div class="gh-avatar-wrapper">
+									<img src="https://avatars.githubusercontent.com/u/184907089?v=4" alt="Sweta Kadam" class="gh-avatar-real-img" onerror="this.src='images/profile.jpg'" />
+									<div class="gh-active-pulse" title="Active on GitHub"></div>
+								</div>
+								<div class="gh-user-details">
+									<div class="gh-name-row">
+										<h3 class="gh-display-name">Sweta Kadam</h3>
+										<span class="gh-verified-badge" title="Verified GitHub Developer"><i class="fa-solid fa-circle-check"></i></span>
+									</div>
+									<a href="https://github.com/Shweta-Tech-creator" target="_blank" rel="noopener noreferrer" class="gh-handle-link">
+										<i class="devicon-github-original"></i>
+										<span>@Shweta-Tech-creator</span>
+										<i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.75rem;"></i>
+									</a>
+								</div>
+							</div>
+
+							<p class="gh-profile-bio">
+								🌈 Believe in your ideas, trust the process, and keep building. The best projects start with curiosity and courage.
+							</p>
+
+							<div style="display: flex; align-items: center; gap: 8px; color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.25rem;">
+								<i class="fa-solid fa-location-dot" style="color: #2563eb;"></i>
+								<span>Thane, Maharashtra, India</span>
+							</div>
+
+							<div class="gh-profile-footer">
+								<a href="https://github.com/Shweta-Tech-creator" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" style="width: 100%; justify-content: center; gap: 8px;">
+									<i class="devicon-github-original" style="font-size: 1.15rem;"></i>
+									<span>Open @Shweta-Tech-creator on GitHub ↗</span>
+								</a>
+							</div>
+						</div>
+
+						<!-- Right: Real Metrics & Language Distribution -->
+						<div class="gh-native-card gh-card-stats bento-card">
+							
+							<div class="gh-card-header-flex" style="margin-bottom: 1rem;">
+								<div>
+									<span class="gh-badge-pill"><i class="fa-solid fa-chart-pie" style="color: #2563eb;"></i> Repository Insights</span>
+									<h4 class="gh-card-heading">Developer Metrics &amp; Languages</h4>
+								</div>
+							</div>
+
+							<!-- 4 Quad Metrics -->
+							<div class="gh-metrics-quad" style="margin-top: 0; margin-bottom: 1.25rem;">
+								<div class="gh-metric-box">
+									<span class="gh-metric-num" id="ghRepoCount">69</span>
+									<span class="gh-metric-lbl">Public Repos</span>
+								</div>
+								<div class="gh-metric-box">
+									<span class="gh-metric-num" id="ghFollowers">28</span>
+									<span class="gh-metric-lbl">Followers</span>
+								</div>
+								<div class="gh-metric-box">
+									<span class="gh-metric-num" id="ghFollowing">30</span>
+									<span class="gh-metric-lbl">Following</span>
+								</div>
+								<div class="gh-metric-box">
+									<span class="gh-metric-num">745+</span>
+									<span class="gh-metric-lbl">All-Time Commits</span>
+								</div>
+							</div>
+
+							<!-- Language Distribution Bar -->
+							<div class="gh-lang-distribution">
+								<div class="gh-lang-title-row">
+									<h5 class="gh-lang-heading">Primary Languages</h5>
+									<span class="gh-lang-sub">Analyzed across 69 Repos</span>
+								</div>
+
+								<div class="gh-multibar">
+									<div class="gh-bar-seg seg-html" style="width: 46%;" title="HTML & Web: 46%"></div>
+									<div class="gh-bar-seg seg-js" style="width: 22%;" title="JavaScript: 22%"></div>
+									<div class="gh-bar-seg seg-python" style="width: 14%;" title="Python: 14%"></div>
+									<div class="gh-bar-seg seg-ts" style="width: 10%;" title="TypeScript: 10%"></div>
+									<div class="gh-bar-seg seg-cpp" style="width: 8%;" title="C++ & CSS: 8%"></div>
+								</div>
+
+								<div class="gh-lang-legend-grid">
+									<div class="gh-legend-item">
+										<span class="gh-dot seg-html"></span>
+										<span class="gh-legend-name">HTML</span>
+										<span class="gh-legend-pct">46%</span>
+									</div>
+									<div class="gh-legend-item">
+										<span class="gh-dot seg-js"></span>
+										<span class="gh-legend-name">JavaScript</span>
+										<span class="gh-legend-pct">22%</span>
+									</div>
+									<div class="gh-legend-item">
+										<span class="gh-dot seg-python"></span>
+										<span class="gh-legend-name">Python</span>
+										<span class="gh-legend-pct">14%</span>
+									</div>
+									<div class="gh-legend-item">
+										<span class="gh-dot seg-ts"></span>
+										<span class="gh-legend-name">TypeScript</span>
+										<span class="gh-legend-pct">10%</span>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+		<!-- 6. ACHIEVEMENTS & CERTIFICATIONS SECTION -->
+		<section id="achievements" class="section section-bg-alt section-achievements-compact">
+			<div class="container">
+				<div class="section-header achievements-animated-header">
+					<span class="section-eyebrow float-bounce-pill">
+						<span class="pill-pulse-dot"></span>
+						Milestones
+					</span>
+					<h2 class="section-title flow-bounce-headline" id="achievementsHeadline">
+						<span class="bounce-word"><span class="b-char">C</span><span class="b-char">e</span><span class="b-char">r</span><span class="b-char">t</span><span class="b-char">i</span><span class="b-char">f</span><span class="b-char">i</span><span class="b-char">c</span><span class="b-char">a</span><span class="b-char">t</span><span class="b-char">i</span><span class="b-char">o</span><span class="b-char">n</span><span class="b-char">s</span></span>
+						<span class="bounce-word amp-word"><span class="b-char">&amp;</span></span>
+						<span class="bounce-word highlight-journey-word"><span class="b-char">A</span><span class="b-char">c</span><span class="b-char">h</span><span class="b-char">i</span><span class="b-char">e</span><span class="b-char">v</span><span class="b-char">e</span><span class="b-char">m</span><span class="b-char">e</span><span class="b-char">n</span><span class="b-char">t</span><span class="b-char">s</span></span>
+					</h2>
+					<p class="section-desc flow-fade-desc">
+						Recognized credentials and milestones in software engineering and competitive hackathons.
+					</p>
+				</div>
+
+				<!-- Horizontal Moving Certificate Showcase with Pop-Up Cards -->
+				<div class="cert-marquee-container">
+					<div class="cert-marquee-controls">
+						<div class="cert-ctrl-btns">
+							<button type="button" class="cert-nav-btn" id="certPrevBtn" title="Scroll Left" onclick="window.scrollCertMarquee(-1); event.stopPropagation();"><i class="fa-solid fa-chevron-left"></i></button>
+							<button type="button" class="cert-nav-btn" id="certPlayPauseBtn" title="Pause/Resume Auto Scroll" onclick="window.toggleCertMarqueePause(this); event.stopPropagation();"><i class="fa-solid fa-pause"></i></button>
+							<button type="button" class="cert-nav-btn" id="certNextBtn" title="Scroll Right" onclick="window.scrollCertMarquee(1); event.stopPropagation();"><i class="fa-solid fa-chevron-right"></i></button>
+						</div>
+					</div>
+
+					<div class="cert-marquee-viewport" id="certViewport">
+						<div class="cert-marquee-track" id="certTrack">
+							
+							<!-- CARD 1: Kaggle -->
+							<div class="cert-popup-card sticky-note sticky-color-yellow" data-index="1"
+								data-img="images/cert-kaggle.png"
+								data-title="Intro to Machine Learning"
+								data-issuer="Kaggle Learn"
+								data-date="Aug 13, 2026"
+								data-desc="Comprehensive hands-on training covering machine learning foundations, decision trees, random forests, model validation, and predictive algorithmic pipelines."
+								onclick="window.openCertModal(this); event.stopPropagation();">
+								<div class="sticky-tape"></div>
+								<div class="cert-card-media">
+									<img src="images/cert-kaggle.png" alt="Intro to Machine Learning - Kaggle" loading="lazy" />
+									<div class="cert-badge-row">
+										<span class="cert-badge-tag cert-badge-kaggle"><i class="fa-solid fa-brain"></i> Kaggle</span>
+										<span class="cert-verified-pill"><i class="fa-solid fa-circle-check"></i> Verified</span>
+									</div>
+									<div class="cert-hover-hint" onclick="window.openCertModal(this); event.stopPropagation();">
+										<span class="cert-zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> View Certificate</span>
+									</div>
+								</div>
+								<div class="cert-card-body">
+									<div class="cert-issuer-row">
+										<span class="cert-issuer"><i class="fa-solid fa-award" style="color: #0284c7;"></i> Kaggle Learn</span>
+										<span class="cert-skill-pill">Machine Learning</span>
+									</div>
+									<h4 class="cert-title">Intro to Machine Learning</h4>
+									<div class="cert-card-footer">
+										<span class="cert-date"><i class="fa-regular fa-calendar"></i> Aug 13, 2026</span>
+										<button type="button" class="cert-view-btn-pill" onclick="window.openCertModal(this); event.stopPropagation();">Expand <i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+									</div>
+								</div>
+							</div>
+
+							<!-- CARD 2: FlutterCraft -->
+							<div class="cert-popup-card sticky-note sticky-color-cyan" data-index="2"
+								data-img="images/cert-fluttercraft.png"
+								data-title="Dart Programming for Flutter"
+								data-issuer="FlutterCraft Academy"
+								data-date="Aug 12, 2026"
+								data-desc="Advanced 14-hour professional curriculum in Dart language mastery, asynchronous streams, OOP architecture, and state-driven Flutter application engineering."
+								onclick="window.openCertModal(this); event.stopPropagation();">
+								<div class="sticky-tape"></div>
+								<div class="cert-card-media">
+									<img src="images/cert-fluttercraft.png" alt="Dart Programming for Flutter" loading="lazy" />
+									<div class="cert-badge-row">
+										<span class="cert-badge-tag cert-badge-flutter"><i class="fa-solid fa-mobile-screen-button"></i> FlutterCraft</span>
+										<span class="cert-verified-pill"><i class="fa-solid fa-circle-check"></i> Verified</span>
+									</div>
+									<div class="cert-hover-hint" onclick="window.openCertModal(this); event.stopPropagation();">
+										<span class="cert-zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> View Certificate</span>
+									</div>
+								</div>
+								<div class="cert-card-body">
+									<div class="cert-issuer-row">
+										<span class="cert-issuer"><i class="fa-solid fa-award" style="color: #0284c7;"></i> FlutterCraft Academy</span>
+										<span class="cert-skill-pill">Dart &amp; Flutter</span>
+									</div>
+									<h4 class="cert-title">Dart Programming for Flutter</h4>
+									<div class="cert-card-footer">
+										<span class="cert-date"><i class="fa-regular fa-calendar"></i> Aug 12, 2026</span>
+										<button type="button" class="cert-view-btn-pill" onclick="window.openCertModal(this); event.stopPropagation();">Expand <i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+									</div>
+								</div>
+							</div>
+
+							<!-- CARD 3: Oracle -->
+							<div class="cert-popup-card sticky-note sticky-color-peach" data-index="3"
+								data-img="images/cert-oracle.png"
+								data-title="Agentic AI Certified Associate"
+								data-issuer="Oracle University"
+								data-date="Aug 11, 2026"
+								data-desc="Globally recognized certification recognizing verified proficiency in Agentic AI foundations, enterprise cloud infrastructure, and autonomous database workflows."
+								onclick="window.openCertModal(this); event.stopPropagation();">
+								<div class="sticky-tape"></div>
+								<div class="cert-card-media">
+									<img src="images/cert-oracle.png" alt="Oracle Certified Foundations Associate" loading="lazy" />
+									<div class="cert-badge-row">
+										<span class="cert-badge-tag cert-badge-oracle"><i class="fa-solid fa-shield-halved"></i> Oracle Certified</span>
+										<span class="cert-verified-pill"><i class="fa-solid fa-circle-check"></i> Verified</span>
+									</div>
+									<div class="cert-hover-hint" onclick="window.openCertModal(this); event.stopPropagation();">
+										<span class="cert-zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> View Certificate</span>
+									</div>
+								</div>
+								<div class="cert-card-body">
+									<div class="cert-issuer-row">
+										<span class="cert-issuer"><i class="fa-solid fa-award" style="color: #dc2626;"></i> Oracle University</span>
+										<span class="cert-skill-pill">Agentic AI &amp; Cloud</span>
+									</div>
+									<h4 class="cert-title">Agentic AI Certified Associate</h4>
+									<div class="cert-card-footer">
+										<span class="cert-date"><i class="fa-regular fa-calendar"></i> Aug 11, 2026</span>
+										<button type="button" class="cert-view-btn-pill" onclick="window.openCertModal(this); event.stopPropagation();">Expand <i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+									</div>
+								</div>
+							</div>
+
+							<!-- CARD 4: be10x -->
+							<div class="cert-popup-card sticky-note sticky-color-lavender" data-index="4"
+								data-img="images/cert-be10x.png"
+								data-title="AI Tools &amp; Claude Workshop"
+								data-issuer="be10x Official"
+								data-date="Aug 9, 2026"
+								data-desc="Intensive training on state-of-the-art AI tooling, Claude-assisted code synthesis, rapid data analysis pipelines, and workflow automation acceleration."
+								onclick="window.openCertModal(this); event.stopPropagation();">
+								<div class="sticky-tape"></div>
+								<div class="cert-card-media">
+									<img src="images/cert-be10x.png" alt="AI Tools & Claude Workshop" loading="lazy" />
+									<div class="cert-badge-row">
+										<span class="cert-badge-tag cert-badge-be10x"><i class="fa-solid fa-bolt"></i> be10x</span>
+										<span class="cert-verified-pill"><i class="fa-solid fa-circle-check"></i> Verified</span>
+									</div>
+									<div class="cert-hover-hint" onclick="window.openCertModal(this); event.stopPropagation();">
+										<span class="cert-zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> View Certificate</span>
+									</div>
+								</div>
+								<div class="cert-card-body">
+									<div class="cert-issuer-row">
+										<span class="cert-issuer"><i class="fa-solid fa-award" style="color: #0f172a;"></i> be10x Official</span>
+										<span class="cert-skill-pill">Generative AI</span>
+									</div>
+									<h4 class="cert-title">AI Tools &amp; Claude Workshop</h4>
+									<div class="cert-card-footer">
+										<span class="cert-date"><i class="fa-regular fa-calendar"></i> Aug 9, 2026</span>
+										<button type="button" class="cert-view-btn-pill" onclick="window.openCertModal(this); event.stopPropagation();">Expand <i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+									</div>
+								</div>
+							</div>
+
+							<!-- CARD 5: ITM Skills University -->
+							<div class="cert-popup-card sticky-note sticky-color-gold" data-index="5"
+								data-img="images/cert-itm.jpg"
+								data-title="Certificate of Excellence in Data Science"
+								data-issuer="School of Future Tech"
+								data-date="Feb 13, 2026"
+								data-desc="Awarded by School of Future Tech & R&D Club for outstanding research methodology and practical data science applications in computer science engineering."
+								onclick="window.openCertModal(this); event.stopPropagation();">
+								<div class="sticky-tape"></div>
+								<div class="cert-card-media">
+									<img src="images/cert-itm.jpg" alt="ITM Skills University Certificate of Excellence" loading="lazy" />
+									<div class="cert-badge-row">
+										<span class="cert-badge-tag cert-badge-itm"><i class="fa-solid fa-graduation-cap"></i> ITM University</span>
+										<span class="cert-verified-pill"><i class="fa-solid fa-circle-check"></i> Academic</span>
+									</div>
+									<div class="cert-hover-hint" onclick="window.openCertModal(this); event.stopPropagation();">
+										<span class="cert-zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> View Certificate</span>
+									</div>
+								</div>
+								<div class="cert-card-body">
+									<div class="cert-issuer-row">
+										<span class="cert-issuer"><i class="fa-solid fa-award" style="color: #d97706;"></i> School of Future Tech</span>
+										<span class="cert-skill-pill">Data Science</span>
+									</div>
+									<h4 class="cert-title">Certificate of Excellence</h4>
+									<div class="cert-card-footer">
+										<span class="cert-date"><i class="fa-regular fa-calendar"></i> Feb 13, 2026</span>
+										<button type="button" class="cert-view-btn-pill" onclick="window.openCertModal(this); event.stopPropagation();">Expand <i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+									</div>
+								</div>
+							</div>
+
+							<!-- CARD 6: Deloitte -->
+							<div class="cert-popup-card sticky-note sticky-color-green" data-index="6"
+								data-img="images/cert-deloitte.png"
+								data-title="Technology Job Simulation"
+								data-issuer="Deloitte Global"
+								data-date="Aug 2, 2025"
+								data-desc="Completed practical developer simulation for Deloitte Global, demonstrating real-world coding development, architecture design, and enterprise problem-solving."
+								onclick="window.openCertModal(this); event.stopPropagation();">
+								<div class="sticky-tape"></div>
+								<div class="cert-card-media">
+									<img src="images/cert-deloitte.png" alt="Deloitte Technology Job Simulation" loading="lazy" />
+									<div class="cert-badge-row">
+										<span class="cert-badge-tag cert-badge-deloitte"><i class="fa-solid fa-building-columns"></i> Deloitte</span>
+										<span class="cert-verified-pill"><i class="fa-solid fa-circle-check"></i> Verified</span>
+									</div>
+									<div class="cert-hover-hint" onclick="window.openCertModal(this); event.stopPropagation();">
+										<span class="cert-zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> View Certificate</span>
+									</div>
+								</div>
+								<div class="cert-card-body">
+									<div class="cert-issuer-row">
+										<span class="cert-issuer"><i class="fa-solid fa-award" style="color: #4d7c0f;"></i> Deloitte Global</span>
+										<span class="cert-skill-pill">Job Simulation</span>
+									</div>
+									<h4 class="cert-title">Technology Job Simulation</h4>
+									<div class="cert-card-footer">
+										<span class="cert-date"><i class="fa-regular fa-calendar"></i> Aug 2, 2025</span>
+										<button type="button" class="cert-view-btn-pill" onclick="window.openCertModal(this); event.stopPropagation();">Expand <i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+									</div>
+								</div>
+							</div>
+
+							<!-- CARD 7: BharatXR -->
+							<div class="cert-popup-card sticky-note sticky-color-pink" data-index="7"
+								data-img="images/cert-bharatxr.png"
+								data-title="Snapchat AR Lens Studio Workshop"
+								data-issuer="BharatXR &amp; Arexa"
+								data-date="Feb 3, 2025"
+								data-desc="Awarded Certificate of Appreciation for building interactive Snapchat Augmented Reality (AR) lenses using Lens Studio during the spatial computing workshop."
+								onclick="window.openCertModal(this); event.stopPropagation();">
+								<div class="sticky-tape"></div>
+								<div class="cert-card-media">
+									<img src="images/cert-bharatxr.png" alt="BharatXR AR/VR Workshop" loading="lazy" />
+									<div class="cert-badge-row">
+										<span class="cert-badge-tag cert-badge-xr"><i class="fa-solid fa-glasses"></i> BharatXR</span>
+										<span class="cert-verified-pill"><i class="fa-solid fa-circle-check"></i> Verified</span>
+									</div>
+									<div class="cert-hover-hint" onclick="window.openCertModal(this); event.stopPropagation();">
+										<span class="cert-zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> View Certificate</span>
+									</div>
+								</div>
+								<div class="cert-card-body">
+									<div class="cert-issuer-row">
+										<span class="cert-issuer"><i class="fa-solid fa-award" style="color: #7c3aed;"></i> BharatXR &amp; Arexa</span>
+										<span class="cert-skill-pill">Spatial AR/VR</span>
+									</div>
+									<h4 class="cert-title">Snapchat AR Lens Studio</h4>
+									<div class="cert-card-footer">
+										<span class="cert-date"><i class="fa-regular fa-calendar"></i> Feb 2025</span>
+										<button type="button" class="cert-view-btn-pill" onclick="window.openCertModal(this); event.stopPropagation();">Expand <i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+									</div>
+								</div>
+							</div>
+
+							<!-- CARD 8: Postman -->
+							<div class="cert-popup-card sticky-note sticky-color-orange" data-index="8"
+								data-img="images/cert-postman.png"
+								data-title="API Fundamentals Student Expert"
+								data-issuer="Postman Official"
+								data-date="Jan 17, 2025"
+								data-desc="Official Postman Student Expert certification demonstrating proficiency with REST APIs, request/response lifecycle, test scripts, authorization, and collections."
+								onclick="window.openCertModal(this); event.stopPropagation();">
+								<div class="sticky-tape"></div>
+								<div class="cert-card-media">
+									<img src="images/cert-postman.png" alt="Postman API Fundamentals Student Expert" loading="lazy" />
+									<div class="cert-badge-row">
+										<span class="cert-badge-tag cert-badge-postman"><i class="fa-solid fa-paper-plane"></i> Postman</span>
+										<span class="cert-verified-pill"><i class="fa-solid fa-circle-check"></i> Verified</span>
+									</div>
+									<div class="cert-hover-hint" onclick="window.openCertModal(this); event.stopPropagation();">
+										<span class="cert-zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> View Certificate</span>
+									</div>
+								</div>
+								<div class="cert-card-body">
+									<div class="cert-issuer-row">
+										<span class="cert-issuer"><i class="fa-solid fa-award" style="color: #ea580c;"></i> Postman Official</span>
+										<span class="cert-skill-pill">REST APIs</span>
+									</div>
+									<h4 class="cert-title">API Fundamentals Expert</h4>
+									<div class="cert-card-footer">
+										<span class="cert-date"><i class="fa-regular fa-calendar"></i> Jan 17, 2025</span>
+										<button type="button" class="cert-view-btn-pill" onclick="window.openCertModal(this); event.stopPropagation();">Expand <i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+									</div>
+								</div>
+							</div>
+
+							<!-- CARD 9: GenAI 101 -->
+							<div class="cert-popup-card sticky-note sticky-color-mint" data-index="9"
+								data-img="images/cert-genai.png"
+								data-title="GenAI 101 with Pieces"
+								data-issuer="Pieces for Developers"
+								data-date="Dec 16, 2024"
+								data-desc="Completed generative AI curriculum covering contextual code copilot integration, LLM embeddings, contextual code repo search, and developer workflow augmentation."
+								onclick="window.openCertModal(this); event.stopPropagation();">
+								<div class="sticky-tape"></div>
+								<div class="cert-card-media">
+									<img src="images/cert-genai.png" alt="GenAI 101 with Pieces" loading="lazy" />
+									<div class="cert-badge-row">
+										<span class="cert-badge-tag cert-badge-pieces"><i class="fa-solid fa-wand-magic-sparkles"></i> Pieces AI</span>
+										<span class="cert-verified-pill"><i class="fa-solid fa-circle-check"></i> Verified</span>
+									</div>
+									<div class="cert-hover-hint" onclick="window.openCertModal(this); event.stopPropagation();">
+										<span class="cert-zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> View Certificate</span>
+									</div>
+								</div>
+								<div class="cert-card-body">
+									<div class="cert-issuer-row">
+										<span class="cert-issuer"><i class="fa-solid fa-award" style="color: #059669;"></i> Pieces for Developers</span>
+										<span class="cert-skill-pill">AI Copilots</span>
+									</div>
+									<h4 class="cert-title">GenAI 101 with Pieces</h4>
+									<div class="cert-card-footer">
+										<span class="cert-date"><i class="fa-regular fa-calendar"></i> Dec 16, 2024</span>
+										<button type="button" class="cert-view-btn-pill" onclick="window.openCertModal(this); event.stopPropagation();">Expand <i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- 7. CONTACT SECTION -->
+		<section id="contact" class="section">
+			<div class="container">
+				<div class="section-header contact-animated-header">
+					<span class="section-eyebrow float-bounce-pill">
+						<span class="pill-pulse-dot"></span>
+						Let's Connect
+					</span>
+					<h2 class="section-title flow-bounce-headline" id="contactHeadline">
+						<span class="bounce-word"><span class="b-char">H</span><span class="b-char">a</span><span class="b-char">v</span><span class="b-char">e</span></span>
+						<span class="bounce-word"><span class="b-char">a</span></span>
+						<span class="bounce-word"><span class="b-char">V</span><span class="b-char">i</span><span class="b-char">s</span><span class="b-char">i</span><span class="b-char">o</span><span class="b-char">n</span><span class="b-char">?</span></span>
+						<span class="bounce-word"><span class="b-char">L</span><span class="b-char">e</span><span class="b-char">t</span><span class="b-char">'</span><span class="b-char">s</span></span>
+						<span class="bounce-word"><span class="b-char">C</span><span class="b-char">o</span><span class="b-char">d</span><span class="b-char">e</span></span>
+						<span class="bounce-word highlight-journey-word"><span class="b-char">I</span><span class="b-char">t</span></span>
+						<span class="bounce-word highlight-journey-word"><span class="b-char">T</span><span class="b-char">o</span><span class="b-char">g</span><span class="b-char">e</span><span class="b-char">t</span><span class="b-char">h</span><span class="b-char">e</span><span class="b-char">r</span></span>
+					</h2>
+					<p class="section-desc flow-fade-desc">
+						Open for Software Engineering Internships, GenAI Collaborations, and Full-Stack opportunities. Pick an inquiry type or send a custom note below!
+					</p>
+				</div>
+
+				<div class="contact-unified-wrapper">
+					
+					<!-- Left Column: Attached Visual Showcase -->
+					<div class="contact-attached-visual">
+						<!-- Ambient Glow Orb -->
+						<div class="contact-glow-orb"></div>
+
+						<!-- Developer Code Terminal Card -->
+						<div class="contact-code-terminal">
+							<div class="terminal-bar">
+								<div class="terminal-dots">
+									<span class="dot dot-red"></span>
+									<span class="dot dot-yellow"></span>
+									<span class="dot dot-green"></span>
+								</div>
+								<span class="terminal-title">connect.config.ts</span>
+							</div>
+							<div class="terminal-body">
+								<pre class="terminal-code"><code><span class="code-kw">const</span> <span class="code-var">developer</span> = {
+  <span class="code-prop">name</span>: <span class="code-str">"Sweta Kadam"</span>,
+  <span class="code-prop">role</span>: <span class="code-str">"Full Stack &amp; AI Developer"</span>,
+  <span class="code-prop">status</span>: <span class="code-str">"Available for Roles"</span>,
+  <span class="code-prop">response</span>: <span class="code-str">"Within 24 Hours"</span>
+};
+
+<span class="code-fn">sendMessage</span>(<span class="code-var">developer</span>);</code></pre>
+							</div>
+						</div>
+
+						<!-- Quick Connect Channels -->
+						<div class="contact-channels-box">
+							<a href="mailto:kadamsweta92@gmail.com" class="quick-link-btn" title="Email Sweta">
+								<i class="fa-solid fa-envelope" style="color: #60a5fa;"></i>
+								<span>kadamsweta92@gmail.com</span>
+							</a>
+							<a href="tel:+918828321619" class="quick-link-btn" title="Call Sweta">
+								<i class="fa-solid fa-phone" style="color: #4ade80;"></i>
+								<span>(+91) 8828321619</span>
+							</a>
+							<div class="quick-link-row">
+								<a href="https://www.linkedin.com/in/sweta-kadam-5851a4323/" target="_blank" rel="noopener noreferrer" class="quick-social-pill">
+									<i class="fa-brands fa-linkedin-in"></i> LinkedIn
+								</a>
+								<a href="https://github.com/Shweta-Tech-creator" target="_blank" rel="noopener noreferrer" class="quick-social-pill" style="background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.2);">
+									<i class="fa-brands fa-github"></i> GitHub
+								</a>
+								<span class="quick-location-pill">
+									<i class="fa-solid fa-location-dot"></i> Thane, India
+								</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Right Column: Attached Form (Name, Email, Message) -->
+					<div class="contact-attached-form-pane">
+						<form id="contactForm" class="contact-innovative-form" onsubmit="handleContactSubmit(event)">
+							
+							<div class="form-header-box">
+								<h3 class="form-card-title">Send a Direct Message</h3>
+								<p class="form-card-subtitle">Feel free to reach out for roles, project collaborations, or a quick technical chat.</p>
+							</div>
+
+							<!-- Field 1: Name -->
+							<div class="form-floating-group">
+								<span class="floating-icon"><i class="fa-regular fa-user"></i></span>
+								<input class="floating-input" type="text" id="contactName" placeholder=" " required />
+								<label class="floating-label" for="contactName">Your Name *</label>
+							</div>
+
+							<!-- Field 2: Email -->
+							<div class="form-floating-group">
+								<span class="floating-icon"><i class="fa-regular fa-envelope"></i></span>
+								<input class="floating-input" type="email" id="contactEmail" placeholder=" " required />
+								<label class="floating-label" for="contactEmail">Your Email Address *</label>
+							</div>
+
+							<!-- Field 3: Message -->
+							<div class="form-floating-group">
+								<span class="floating-icon" style="top: 1.15rem;"><i class="fa-regular fa-comment-dots"></i></span>
+								<textarea class="floating-textarea" id="contactMessage" placeholder=" " rows="5" required></textarea>
+								<label class="floating-label" for="contactMessage">Your Message *</label>
+							</div>
+
+							<!-- Submit Button -->
+							<div class="form-submit-row">
+								<button type="submit" id="contactSubmitBtn" class="innovative-submit-btn">
+									<span class="btn-text">Send Message</span>
+									<span class="btn-icon-plane"><i class="fa-solid fa-paper-plane"></i></span>
+								</button>
+								<div id="formSuccessToast" class="form-success-toast">
+									<i class="fa-solid fa-circle-check"></i> Message sent successfully! I'll get back to you soon.
+								</div>
+							</div>
+
+						</form>
+					</div>
+
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<!-- =======================================================================
+	     RESUME IN-BROWSER PREVIEW MODAL
+	     ======================================================================= -->
+	<div id="resumeModal" class="modal-overlay">
+		<div class="modal-container" style="max-width: 780px;">
+			<div class="modal-header">
+				<h3 class="modal-title">Sweta Kadam — Curriculum Vitae</h3>
+				<button id="closeResumeModal" class="modal-close-btn" aria-label="Close modal">&times;</button>
+			</div>
+			<div class="modal-body" style="padding: 2rem;">
+				
+				<!-- Header Section -->
+				<div style="border-bottom: 2px solid #e2e8f0; padding-bottom: 1.25rem; margin-bottom: 1.5rem;">
+					<h2 style="font-size: 1.85rem; color: #0f172a; font-family: var(--font-heading); margin-bottom: 0.25rem;">Sweta Kadam</h2>
+					<p style="color: #2563eb; font-weight: 700; font-size: 1.05rem;">Junior Developer / Full Stack Developer</p>
+					<div style="display: flex; gap: 1rem; flex-wrap: wrap; color: #64748b; font-size: 0.9rem; margin-top: 0.4rem;">
+						<span>📍 Thane, Maharashtra</span>
+						<span>•</span>
+						<span>📞 (+91) 8828321619</span>
+						<span>•</span>
+						<span>✉️ kadamsweta92@gmail.com</span>
+					</div>
+				</div>
+
+				<!-- Professional Summary -->
+				<h4 style="color: #0f172a; margin-bottom: 0.5rem; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; font-family: var(--font-heading); font-weight: 700;">Professional Summary</h4>
+				<p style="color: #475569; font-size: 0.94rem; line-height: 1.65; margin-bottom: 1.5rem;">
+					Results-driven Full Stack Developer with hands-on experience in building scalable and responsive web applications. Proficient in frontend and backend development, RESTful APIs, and database integration. Strong focus on clean UI/UX, performance optimization, and collaborative problem-solving. Passionate about learning new technologies and delivering reliable, high-quality solutions aligned with business and user requirements.
+				</p>
+
+				<!-- Work Experience -->
+				<h4 style="color: #0f172a; margin-bottom: 0.75rem; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; font-family: var(--font-heading); font-weight: 700;">Work Experience</h4>
+				
+				<!-- Role 1: Cogniq AI -->
+				<div style="margin-bottom: 1rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1rem 1.25rem;">
+					<div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; margin-bottom: 0.25rem;">
+						<h5 style="font-size: 0.98rem; color: #0f172a; font-weight: 700;">AI Developer Intern</h5>
+						<span style="font-size: 0.82rem; color: #059669; font-weight: 700; background: #ecfdf5; border: 1px solid #a7f3d0; padding: 0.15rem 0.5rem; border-radius: 9999px;">🟢 Current</span>
+					</div>
+					<p style="color: #2563eb; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.5rem;">Cogniq AI</p>
+					<ul style="color: #475569; font-size: 0.88rem; line-height: 1.6; margin-left: 1.25rem;">
+						<li>Engineering intelligent AI workflows, prompt engineering pipelines, and Google Gemini LLM integrations.</li>
+						<li>Building interactive AI agent tools, real-time response streams, and cloud backend services.</li>
+					</ul>
+				</div>
+
+				<!-- Role 2: Softvyank -->
+				<div style="margin-bottom: 1rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1rem 1.25rem;">
+					<div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; margin-bottom: 0.25rem;">
+						<h5 style="font-size: 0.98rem; color: #0f172a; font-weight: 700;">Full Stack Developer Intern</h5>
+						<span style="font-size: 0.82rem; color: #10b981; font-weight: 700; background: #ecfdf5; border: 1px solid #a7f3d0; padding: 0.15rem 0.5rem; border-radius: 9999px;">Recent • 2 Months</span>
+					</div>
+					<p style="color: #059669; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.5rem;">Softvyank</p>
+					<ul style="color: #475569; font-size: 0.88rem; line-height: 1.6; margin-left: 1.25rem;">
+						<li>Developed frontend UI components in React and integrated backend REST APIs with Node.js/Express.</li>
+						<li>Implemented database queries and conducted code reviews for client deliverables.</li>
+					</ul>
+				</div>
+
+				<!-- Role 3: Saphire -->
+				<div style="margin-bottom: 1.5rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1rem 1.25rem;">
+					<div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; margin-bottom: 0.25rem;">
+						<h5 style="font-size: 0.98rem; color: #0f172a; font-weight: 700;">Full Stack Developer &amp; Product Manager</h5>
+						<span style="font-size: 0.82rem; color: #d97706; font-weight: 700; background: #fffbeb; border: 1px solid #fde68a; padding: 0.15rem 0.5rem; border-radius: 9999px;">2025</span>
+					</div>
+					<p style="color: #d97706; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.5rem;">Saphire</p>
+					<ul style="color: #475569; font-size: 0.88rem; line-height: 1.6; margin-left: 1.25rem;">
+						<li>Led product roadmaps, sprint planning, and full-stack web application engineering.</li>
+						<li>Developed scalable REST APIs, managed database schemas, and delivered performant client features.</li>
+					</ul>
+				</div>
+
+				<!-- Featured Projects -->
+				<h4 style="color: #0f172a; margin-bottom: 0.5rem; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; font-family: var(--font-heading); font-weight: 700;">Featured Projects</h4>
+				<div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem;">
+					
+					<div style="border-left: 3px solid #2563eb; padding-left: 1rem;">
+						<div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap;">
+							<h5 style="color: #0f172a; font-size: 0.98rem; font-weight: 700;">SceneSync (2025)</h5>
+							<span style="font-size: 0.8rem; color: #2563eb; font-weight: 600;">React, Vite, Gemini AI, Fabric.js, Socket.IO, Node, MongoDB</span>
+						</div>
+						<ul style="color: #475569; font-size: 0.88rem; line-height: 1.6; margin-left: 1rem; margin-top: 0.25rem;">
+							<li>Collaborative film pre-production platform from script formatting to visual storyboard creation.</li>
+							<li>AI scene breakdown powered by Google Gemini API and timeline shot sequencing with audio support.</li>
+							<li>Real-time team collaboration with Socket.IO and Cloudinary asset management.</li>
+						</ul>
+					</div>
+
+					<div style="border-left: 3px solid #0ea5e9; padding-left: 1rem;">
+						<div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap;">
+							<h5 style="color: #0f172a; font-size: 0.98rem; font-weight: 700;">Externship (2025)</h5>
+							<span style="font-size: 0.8rem; color: #0ea5e9; font-weight: 600;">React.js, Node.js, Express, MongoDB, Cloudinary, JWT</span>
+						</div>
+						<ul style="color: #475569; font-size: 0.88rem; line-height: 1.6; margin-left: 1rem; margin-top: 0.25rem;">
+							<li>Full-stack internship portal for students to apply, upload resumes, and track review status.</li>
+							<li>Admin portal to publish openings, filter candidates, and manage review pipelines.</li>
+						</ul>
+					</div>
+
+					<div style="border-left: 3px solid #8b5cf6; padding-left: 1rem;">
+						<div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap;">
+							<h5 style="color: #0f172a; font-size: 0.98rem; font-weight: 700;">LinkOrbit (2025)</h5>
+							<span style="font-size: 0.8rem; color: #8b5cf6; font-weight: 600;">React.js, Node.js, Express, MongoDB, Socket.io, Cloudinary</span>
+						</div>
+						<ul style="color: #475569; font-size: 0.88rem; line-height: 1.6; margin-left: 1rem; margin-top: 0.25rem;">
+							<li>Social media aggregator unifying feeds from Instagram, Twitter, YouTube, and LinkedIn into one interface.</li>
+							<li>Multi-platform post scheduling and centralized social analytics.</li>
+						</ul>
+					</div>
+
+					<div style="border-left: 3px solid #10b981; padding-left: 1rem;">
+						<div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap;">
+							<h5 style="color: #0f172a; font-size: 0.98rem; font-weight: 700;">WeSafe (2025)</h5>
+							<span style="font-size: 0.8rem; color: #10b981; font-weight: 600;">Flutter, Dart, Firebase, IoT Bluetooth Sync, Geolocation</span>
+						</div>
+						<ul style="color: #475569; font-size: 0.88rem; line-height: 1.6; margin-left: 1rem; margin-top: 0.25rem;">
+							<li>Cross-platform personal safety application designed for women's security.</li>
+							<li>Smart Watch &amp; Safety Pendant IoT Bluetooth sync, one-touch Manual SOS, and voice Safe Words.</li>
+							<li>Evidence Journey monitoring, Stealth Mode, and instant emergency alerts broadcast.</li>
+						</ul>
+					</div>
+
+				</div>
+
+				<!-- Education -->
+				<h4 style="color: #0f172a; margin-bottom: 0.5rem; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; font-family: var(--font-heading); font-weight: 700;">Education</h4>
+				<ul style="color: #475569; font-size: 0.9rem; line-height: 1.8; margin-left: 1.25rem; margin-bottom: 1.5rem;">
+					<li><strong>B.Tech in Computer Science and Engineering:</strong> ITM Skills University (2024 — Present) • CGPA: 9.14</li>
+					<li><strong>12th Grade (HSC):</strong> Narayana E-Techno Junior College, Thane (2024) • 72.50%</li>
+					<li><strong>10th Grade (SSC):</strong> R.S. Deokar English Medium School (2022) • 87.00%</li>
+				</ul>
+
+				<!-- Technical Skills -->
+				<h4 style="color: #0f172a; margin-bottom: 0.5rem; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; font-family: var(--font-heading); font-weight: 700;">Technical Skills</h4>
+				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem; font-size: 0.88rem; color: #475569; margin-bottom: 1.5rem;">
+					<div><strong>Languages:</strong> Java, Python, JavaScript, C++, SQL</div>
+					<div><strong>Frontend/Backend:</strong> React.js, Node.js, Express, REST, GraphQL</div>
+					<div><strong>Databases:</strong> MongoDB, MySQL, SQL, NoSQL, GraphDB</div>
+					<div><strong>Cloud/DevOps:</strong> AWS, Docker, Kubernetes, Linux</div>
+					<div><strong>Tools:</strong> Git, GitHub, Postman, Figma, Jenkins</div>
+					<div><strong>Deployment:</strong> Vercel, Firebase Hosting, Render</div>
+				</div>
+
+				<div style="text-align: center; padding-top: 1rem; border-top: 1px solid #e2e8f0; display: flex; justify-content: center; gap: 1rem;">
+					<a href="mailto:kadamsweta92@gmail.com?subject=Opportunity%20Discussion%20-%20Sweta%20Kadam" class="btn btn-primary btn-sm">Contact Directly</a>
+					<button onclick="window.print()" class="btn btn-outline btn-sm">Print / Save as PDF</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Certificate Popup Lightbox Modal -->
+	<div id="certModal" class="cert-modal-backdrop" onclick="closeCertModal(event)">
+		<div class="cert-modal-dialog" onclick="event.stopPropagation()">
+			<button type="button" class="cert-modal-close" onclick="closeCertModal()" aria-label="Close Certificate Preview"><i class="fa-solid fa-xmark"></i></button>
+			<div class="cert-modal-content">
+				<div class="cert-modal-img-wrap">
+					<img id="certModalImg" src="" alt="Certificate Preview" />
+				</div>
+				<div class="cert-modal-details">
+					<div class="cert-modal-badge-row">
+						<span class="cert-modal-badge" id="certModalIssuer">Issuer</span>
+						<span class="cert-modal-verified-tag"><i class="fa-solid fa-circle-check"></i> Verified Credential</span>
+					</div>
+					<h3 class="cert-modal-title" id="certModalTitle">Certificate Title</h3>
+					<p class="cert-modal-meta" id="certModalDate"><i class="fa-regular fa-calendar"></i> Issue Date</p>
+					<p class="cert-modal-desc" id="certModalDesc">Description</p>
+					<div class="cert-modal-action-row">
+						<a id="certModalAction" href="" target="_blank" class="btn btn-primary btn-sm">
+							<i class="fa-solid fa-arrow-up-right-from-square"></i> Open Full High-Res
+						</a>
+						<button type="button" class="btn btn-outline btn-sm" onclick="closeCertModal()">
+							Close Preview
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- =======================================================================
+	     PROFESSIONAL EXECUTIVE FOOTER
+	     ======================================================================= -->
+	<footer class="footer">
+		<div class="container">
+			
+			<!-- Main Top Footer Card -->
+			<div class="footer-pro-main">
+				
+				<!-- Brand Info & Location -->
+				<div class="footer-pro-brand">
+					<a href="#hero" class="footer-logo">
+						<div class="footer-logo-badge">
+							<span class="logo-sym">&lt;</span><span class="logo-txt">SK</span><span class="logo-sym">/&gt;</span>
+						</div>
+						<div class="footer-brand-meta">
+							<span class="footer-logo-text">Sweta Kadam</span>
+							<span class="footer-logo-sub">Full Stack Developer &amp; AI Engineer</span>
+						</div>
+					</a>
+					<p class="footer-pro-desc">
+						Building scalable web applications, high-performance full-stack architectures, and production AI workflows.
+					</p>
+					<div class="footer-pro-meta-tags">
+						<span class="meta-tag"><i class="fa-solid fa-location-dot"></i> Thane / Mumbai, India</span>
+						<span class="meta-tag status-available"><span class="pulse-dot"></span> Available Immediately</span>
+					</div>
+				</div>
+
+				<!-- Connect & Official Logos -->
+				<div class="footer-pro-connect">
+					<span class="connect-label">Connect &amp; Profiles</span>
+					<div class="footer-pro-logos-row">
+						
+						<!-- GitHub Official -->
+						<a href="https://github.com/Shweta-Tech-creator" target="_blank" rel="noopener noreferrer" class="pro-logo-btn gh" title="GitHub: @Shweta-Tech-creator">
+							<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+							<span>GitHub</span>
+						</a>
+
+						<!-- LinkedIn Official -->
+						<a href="https://www.linkedin.com/in/sweta-kadam-5851a4323/" target="_blank" rel="noopener noreferrer" class="pro-logo-btn li" title="LinkedIn: Sweta Kadam">
+							<svg width="22" height="22" viewBox="0 0 24 24">
+								<path fill="#0A66C2" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+							</svg>
+							<span>LinkedIn</span>
+						</a>
+
+						<!-- Gmail Official -->
+						<a href="mailto:kadamsweta92@gmail.com" class="pro-logo-btn mail" title="Email: kadamsweta92@gmail.com">
+							<svg width="22" height="22" viewBox="0 0 256 193" fill="none">
+								<path d="M58 192.5H7.7c-4.3 0-7.7-3.4-7.7-7.7V37.6c0-11.8 13.5-18.4 23-11.3L58 52.8v139.7z" fill="#4285F4"/>
+								<path d="M198 192.5h50.3c4.3 0 7.7-3.4 7.7-7.7V37.6c0-11.8-13.5-18.4-23-11.3L198 52.8v139.7z" fill="#34A853"/>
+								<path d="M198 52.8L128 105.3 58 52.8V0h140v52.8z" fill="#EA4335"/>
+								<path d="M58 0L0 43.6 23 60.9 58 34.6V0z" fill="#FBBC04"/>
+								<path d="M198 0l58 43.6-23 17.3-35-26.3V0z" fill="#C5221F"/>
+							</svg>
+							<span>Gmail</span>
+						</a>
+
+					</div>
+
+					<a href="mailto:kadamsweta92@gmail.com" class="footer-email-direct-pill" title="Click to send email">
+						<i class="fa-regular fa-envelope"></i>
+						<span>kadamsweta92@gmail.com</span>
+						<i class="fa-solid fa-arrow-up-right-from-square"></i>
+					</a>
+				</div>
+
+			</div>
+
+			<!-- Bottom Divider & Copyright Bar -->
+			<div class="footer-bottom-bar">
+				<div class="footer-copy">
+					© 2026 <strong>Sweta Kadam</strong>. Built with precision, performance &amp; modern web standards.
+				</div>
+				<a href="#hero" class="footer-back-to-top" title="Scroll to Top">
+					<span>Back to top</span>
+					<i class="fa-solid fa-arrow-up"></i>
+				</a>
+			</div>
+		</div>
+	</footer>
+
+
+
+	<!-- Libraries: Lenis Smooth Scroll + GSAP -->
+	<script src="https://unpkg.com/lenis@1.0.45/dist/lenis.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+	<!-- Preloader & Main Scripts -->
+	<script src="js/github-yearly-data.js?v=20260819"></script>
+	<script src="js/github-calendar.js?v=20260819"></script>
+	<script src="js/preloader.js?v=20260819"></script>
+	<script src="js/main.js?v=20260819"></script>
+
+</body>
+</html>

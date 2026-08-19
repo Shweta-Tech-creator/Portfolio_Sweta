@@ -1,0 +1,405 @@
+/* ==========================================================================
+   PRELOADER STYLES: 3D Ball + Flying Tech Languages into 'SWETA KADAM'
+   Pure White Minimalist Theme
+   ========================================================================== */
+
+#preloader-wrapper {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: #ffffff;
+	z-index: 99999;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	transition: opacity 0.8s cubic-bezier(0.77, 0, 0.175, 1), visibility 0.8s;
+}
+
+#preloader-wrapper.preloader-hidden {
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+}
+
+.preloader-stage {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+/* ==========================================================================
+   Part 1: 3D Rolling Ball on Track (Clean White Aesthetic)
+   ========================================================================== */
+.ball-loader-container {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
+	font-size: clamp(14px, 1.8vw, 18px);
+	z-index: 10;
+}
+
+.pl {
+	position: relative;
+	width: 16em;
+	height: 16em;
+}
+
+.pl,
+.pl__ball,
+.pl__ball-inner-shadow,
+.pl__ball-side-shadows,
+.pl__ball-texture,
+.pl__inner-ring,
+.pl__outer-ring,
+.pl__track-cover {
+	border-radius: 50%;
+}
+
+.pl__ball,
+.pl__ball-inner-shadow,
+.pl__ball-outer-shadow,
+.pl__ball-side-shadows,
+.pl__ball-texture,
+.pl__ball-texture:before,
+.pl__inner-ring,
+.pl__outer-ring,
+.pl__track-cover {
+	position: absolute;
+}
+
+.pl__ball,
+.pl__ball-inner-shadow,
+.pl__ball-outer-shadow,
+.pl__ball-texture:before,
+.pl__track-cover {
+	animation: ball 2.6s linear infinite;
+}
+
+.pl__ball {
+	top: calc(50% - 1.25em);
+	left: calc(50% - 1.25em);
+	transform: rotate(0) translateY(-6.5em);
+	width: 2.5em;
+	height: 2.5em;
+	z-index: 10;
+}
+
+.pl__ball-inner-shadow {
+	animation-name: ballInnerShadow;
+	box-shadow:
+		0 0.1em 0.2em hsla(0, 0%, 0%, 0.35),
+		0 0 0.25em hsla(0, 0%, 0%, 0.15) inset,
+		0 -1em 0.5em hsla(0, 0%, 0%, 0.2) inset;
+	width: 100%;
+	height: 100%;
+}
+
+.pl__ball-outer-shadow {
+	animation-name: ballOuterShadow;
+	background-image: linear-gradient(hsla(0, 0%, 0%, 0.18), hsla(0, 0%, 0%, 0));
+	border-radius: 0 0 50% 50% / 0 0 100% 100%;
+	filter: blur(3px);
+	top: 50%;
+	left: 0;
+	width: 100%;
+	height: 240%;
+	transform: rotate(20deg);
+	transform-origin: 50% 0;
+	z-index: -2;
+}
+
+.pl__ball-side-shadows {
+	background-color: hsla(0, 0%, 0%, 0.12);
+	filter: blur(2px);
+	width: 100%;
+	height: 100%;
+	transform: scale(0.75, 1.1);
+	z-index: -1;
+}
+
+.pl__ball-texture {
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	transform: translate3d(0, 0, 0);
+	background: radial-gradient(circle at 35% 35%, #ffffff 0%, #cbd5e1 45%, #64748b 90%, #334155 100%);
+}
+
+.pl__ball-texture:before {
+	animation-name: ballTexture;
+	animation-duration: 0.25s;
+	background: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15) 2px, transparent 2px, transparent 6px);
+	content: "";
+	display: block;
+	filter: brightness(1.1);
+	top: 0;
+	right: 0;
+	width: 200%;
+	height: 100%;
+}
+
+.pl__inner-ring {
+	box-shadow:
+		0 -0.25em 0.5em rgba(255, 255, 255, 0.9),
+		0 0.5em 0.75em rgba(255, 255, 255, 0.9) inset,
+		0 0.5em 0.375em rgba(0, 0, 0, 0.08),
+		0 -0.5em 0.75em rgba(0, 0, 0, 0.08) inset;
+	top: 2.375em;
+	left: 2.375em;
+	width: calc(100% - 4.75em);
+	height: calc(100% - 4.75em);
+	background: #fafafa;
+}
+
+.pl__outer-ring {
+	box-shadow:
+		0 -0.45em 0.375em rgba(0, 0, 0, 0.08),
+		0 0.5em 0.75em rgba(0, 0, 0, 0.08) inset,
+		0 0.25em 0.5em rgba(255, 255, 255, 0.9),
+		0 -0.5em 0.75em rgba(255, 255, 255, 0.9) inset;
+	top: 0.75em;
+	left: 0.75em;
+	width: calc(100% - 1.5em);
+	height: calc(100% - 1.5em);
+	background: #f4f4f5;
+}
+
+.pl__track-cover {
+	animation-name: trackCover;
+	background-image: conic-gradient(#ffffff 210deg, rgba(255, 255, 255, 0) 270deg);
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.ball-status-text {
+	margin-top: 1.6rem;
+	font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+	font-size: 0.9rem;
+	font-weight: 500;
+	letter-spacing: 0.5px;
+	color: #475569;
+	text-transform: none;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.ball-status-dot {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background-color: #2563eb;
+	box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+	animation: pulseDot 1.2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+	0%, 100% { transform: scale(0.85); opacity: 0.6; }
+	50% { transform: scale(1.2); opacity: 1; }
+}
+
+/* Rolling Ball Keyframe Animations */
+@keyframes ball {
+	from {
+		transform: rotate(0) translateY(-6.5em);
+	}
+	50% {
+		transform: rotate(180deg) translateY(-6em);
+	}
+	to {
+		transform: rotate(360deg) translateY(-6.5em);
+	}
+}
+
+@keyframes ballInnerShadow {
+	from {
+		transform: rotate(0);
+	}
+	to {
+		transform: rotate(-360deg);
+	}
+}
+
+@keyframes ballOuterShadow {
+	from {
+		transform: rotate(20deg);
+	}
+	to {
+		transform: rotate(-340deg);
+	}
+}
+
+@keyframes ballTexture {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(50%);
+	}
+}
+
+@keyframes trackCover {
+	from {
+		transform: rotate(0);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/* ==========================================================================
+   Part 2: Prominent Flying Language Badges
+   ========================================================================== */
+.lang-burst-container {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	pointer-events: none;
+	z-index: 25;
+}
+
+.flying-lang-pill {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 7px;
+	background: transparent;
+	border: none;
+	box-shadow: none;
+	font-family: 'Space Grotesk', -apple-system, sans-serif;
+	font-size: clamp(0.95rem, 1.4vw, 1.18rem);
+	font-weight: 700;
+	color: #0f172a;
+	text-align: center;
+	white-space: nowrap;
+	opacity: 0;
+	transform: scale(0.2);
+	pointer-events: none;
+	line-height: 1;
+}
+
+.flying-lang-pill svg {
+	width: 36px;
+	height: 36px;
+	flex-shrink: 0;
+	filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.1));
+}
+
+@media (max-width: 480px) {
+	.flying-lang-pill {
+		font-size: 0.82rem;
+		gap: 4px;
+	}
+	.flying-lang-pill svg {
+		width: 26px;
+		height: 26px;
+	}
+}
+
+/* ==========================================================================
+   Part 3: Pixel Canvas Logo Animation & Subtitle
+   ========================================================================== */
+.canvas-logo-section {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	pointer-events: none;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.4s ease;
+	z-index: 20;
+}
+
+.canvas-logo-section.active {
+	opacity: 1;
+	visibility: visible;
+	pointer-events: auto;
+}
+
+.canvas-content-wrapper {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	max-width: 95vw;
+}
+
+#pixelLogoCanvas {
+	background: transparent;
+	display: block;
+	max-width: 100%;
+	filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.08));
+}
+
+.logo-desc {
+	font-family: 'Space Grotesk', 'Outfit', -apple-system, sans-serif;
+	font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+	color: #334155;
+	text-align: center;
+	text-transform: none;
+	font-weight: 600;
+	margin-top: 1.75rem;
+	opacity: 0;
+	letter-spacing: -1.5px;
+	transition: letter-spacing 1s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease;
+	line-height: 1.5;
+}
+
+.logo-desc.revealed {
+	opacity: 1;
+	letter-spacing: 0.8px;
+}
+
+/* ==========================================================================
+   Skip / Replay Controls (Interactive Helper)
+   ========================================================================== */
+.preloader-skip-btn {
+	position: absolute;
+	bottom: 2rem;
+	right: 2rem;
+	background: #f8fafc;
+	border: 1px solid #e2e8f0;
+	color: #64748b;
+	font-family: 'Space Grotesk', sans-serif;
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 1.5px;
+	text-transform: uppercase;
+	padding: 0.6rem 1.2rem;
+	border-radius: 999px;
+	cursor: pointer;
+	transition: all 0.25s ease;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	z-index: 1000;
+}
+
+.preloader-skip-btn:hover {
+	background: #0f172a;
+	color: #ffffff;
+	border-color: #0f172a;
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+}

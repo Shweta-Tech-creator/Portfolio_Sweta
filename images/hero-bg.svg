@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="bgLight1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="60%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#eff6ff" />
+    </linearGradient>
+    <radialGradient id="lightGlow1" cx="30%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="lightGlow2" cx="70%" cy="60%" r="50%">
+      <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.10" />
+      <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#bgLight1)" />
+  <rect width="100%" height="100%" fill="url(#lightGlow1)" />
+  <rect width="100%" height="100%" fill="url(#lightGlow2)" />
+  <g stroke="#0f172a" stroke-opacity="0.05" stroke-width="1.2">
+    <line x1="0" y1="1080" x2="960" y2="400" />
+    <line x1="1920" y1="1080" x2="960" y2="400" />
+    <line x1="480" y1="1080" x2="960" y2="400" />
+    <line x1="1440" y1="1080" x2="960" y2="400" />
+    <line x1="0" y1="800" x2="1920" y2="800" />
+    <line x1="0" y1="650" x2="1920" y2="650" />
+    <line x1="0" y1="520" x2="1920" y2="520" />
+  </g>
+</svg>
